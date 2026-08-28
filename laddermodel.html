@@ -1,0 +1,271 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>The Open Model Ladder</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;700;800&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+:root{
+  --ground:#EEF0F3;
+  --panel:#FBFBFC;
+  --ink:#161A21;
+  --ink-soft:#4A525F;
+  --ink-faint:#7C8797;
+  --rule:#D2D7DE;
+  --accent:#0D6E77;
+  --accent-soft:#DCEBEC;
+  --signal:#A85410;
+  --signal-soft:#F3E4D6;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --ground:#101319;
+    --panel:#171B23;
+    --ink:#E7EAEF;
+    --ink-soft:#A6AFBD;
+    --ink-faint:#727D8D;
+    --rule:#2A303B;
+    --accent:#5CC6CE;
+    --accent-soft:#173238;
+    --signal:#E09A55;
+    --signal-soft:#33251A;
+  }
+}
+:root[data-theme="dark"]{
+  --ground:#101319;
+  --panel:#171B23;
+  --ink:#E7EAEF;
+  --ink-soft:#A6AFBD;
+  --ink-faint:#727D8D;
+  --rule:#2A303B;
+  --accent:#5CC6CE;
+  --accent-soft:#173238;
+  --signal:#E09A55;
+  --signal-soft:#33251A;
+}
+*{box-sizing:border-box}
+body{
+  margin:0;background:var(--ground);color:var(--ink);
+  font-family:"Newsreader",Georgia,serif;font-size:17px;line-height:1.62;
+  -webkit-font-smoothing:antialiased;
+}
+.wrap{max-width:themax;max-width:1080px;margin:0 auto;padding:64px 28px 96px}
+.eyebrow{
+  font-family:"JetBrains Mono",ui-monospace,monospace;font-size:11px;font-weight:600;
+  letter-spacing:.16em;text-transform:uppercase;color:var(--accent);
+}
+h1{
+  font-family:"Archivo",Helvetica,Arial,sans-serif;font-weight:800;
+  font-size:clamp(38px,6vw,62px);line-height:1.02;letter-spacing:-.02em;
+  margin:14px 0 0;text-wrap:balance;
+}
+.lede{max-width:62ch;color:var(--ink-soft);font-size:19px;margin:18px 0 0}
+.masthead{border-bottom:2px solid var(--ink);padding-bottom:34px}
+
+.spine{display:flex;flex-direction:column;gap:0;margin-top:8px}
+.rung{
+  display:grid;grid-template-columns:78px 1fr;gap:22px;
+  border-bottom:1px solid var(--rule);padding:38px 0;
+}
+.rung:last-child{border-bottom:none}
+.marker{display:flex;flex-direction:column;align-items:flex-start;gap:8px}
+.numeral{
+  font-family:"Archivo",sans-serif;font-weight:800;font-size:42px;line-height:1;
+  color:var(--accent);letter-spacing:-.03em;font-variant-numeric:tabular-nums;
+}
+.tick{width:2px;flex:1;background:var(--rule);margin-left:6px;min-height:20px}
+.rung h2{
+  font-family:"Archivo",sans-serif;font-weight:700;font-size:26px;letter-spacing:-.015em;
+  margin:0;text-wrap:balance;
+}
+.who{
+  font-family:"JetBrains Mono",monospace;font-size:11px;letter-spacing:.09em;
+  text-transform:uppercase;color:var(--ink-faint);margin:6px 0 14px;
+}
+.rung p{margin:0 0 16px;max-width:64ch;color:var(--ink-soft)}
+.rung p strong{color:var(--ink);font-weight:500}
+
+.facts{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:1px;
+  background:var(--rule);border:1px solid var(--rule);border-radius:3px;overflow:hidden;
+}
+.fact{background:var(--panel);padding:13px 15px}
+.fact dt{
+  font-family:"JetBrains Mono",monospace;font-size:10px;letter-spacing:.12em;
+  text-transform:uppercase;color:var(--ink-faint);margin-bottom:5px;
+}
+.fact dd{margin:0;font-size:15px;line-height:1.45;color:var(--ink)}
+.fact dd code{font-family:"JetBrains Mono",monospace;font-size:13px}
+
+.tools{display:flex;flex-wrap:wrap;gap:6px;margin:16px 0 0}
+.tool{
+  font-family:"JetBrains Mono",monospace;font-size:12px;
+  background:var(--accent-soft);color:var(--accent);
+  padding:4px 9px;border-radius:2px;
+}
+.out{
+  margin-top:18px;border-left:3px solid var(--signal);background:var(--signal-soft);
+  padding:12px 16px;border-radius:0 3px 3px 0;
+}
+.out .lbl{
+  font-family:"JetBrains Mono",monospace;font-size:10px;letter-spacing:.12em;
+  text-transform:uppercase;color:var(--signal);display:block;margin-bottom:4px;
+}
+.out p{margin:0;font-size:15.5px;color:var(--ink)}
+
+.youarehere{
+  margin-top:10px;display:inline-flex;align-items:center;gap:8px;
+  font-family:"JetBrains Mono",monospace;font-size:11px;letter-spacing:.1em;
+  text-transform:uppercase;color:var(--ground);background:var(--accent);
+  padding:5px 11px;border-radius:2px;font-weight:600;
+}
+
+.coda{margin-top:56px;border-top:2px solid var(--ink);padding-top:34px}
+.coda h3{font-family:"Archivo",sans-serif;font-size:22px;font-weight:700;margin:0 0 14px}
+.coda ul{margin:0;padding-left:20px;max-width:66ch;color:var(--ink-soft)}
+.coda li{margin-bottom:10px}
+.coda li strong{color:var(--ink);font-weight:500}
+
+@media (max-width:620px){
+  .rung{grid-template-columns:1fr;gap:10px}
+  .marker{flex-direction:row;align-items:center;gap:12px}
+  .tick{display:none}
+  .numeral{font-size:32px}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header class="masthead">
+  <div class="eyebrow">How people actually get there</div>
+  <h1>The Open Model Ladder</h1>
+  <p class="lede">Almost nobody training a personal open-source model starts by training a model. The progression is a ladder, and most people who end up with something genuinely useful climbed it in this order, stopping at whichever rung solved their problem. Each rung below: what you do, what it costs, and what came out of it in the wild.</p>
+</header>
+
+<div class="spine">
+
+  <section class="rung">
+    <div class="marker"><span class="numeral">0</span><span class="tick"></span></div>
+    <div>
+      <h2>Run somebody else's weights</h2>
+      <div class="who">Weekend one &middot; Ollama, LM Studio, llama.cpp</div>
+      <p>You pull a quantized open-weight model, run it locally, and find out what a 7B actually feels like next to a 32B. This rung is not throat-clearing. It's where you learn quantization tradeoffs, context limits, and what your hardware can hold, and most people discover here that the base model already does 80% of what they wanted.</p>
+      <div class="facts">
+        <dl class="fact"><dt>Hardware</dt><dd>Any 8&ndash;24GB GPU, or a unified-memory Mac</dd></dl>
+        <dl class="fact"><dt>Cost</dt><dd>$0</dd></dl>
+        <dl class="fact"><dt>Time</dt><dd>An afternoon</dd></dl>
+      </div>
+      <div class="tools"><span class="tool">Ollama</span><span class="tool">llama.cpp</span><span class="tool">GGUF Q4_K_M</span><span class="tool">vLLM</span></div>
+      <div class="out"><span class="lbl">What it gets you</span><p>A baseline. Also the honest answer to "do I need to train anything at all," which for a surprising number of projects is no.</p></div>
+    </div>
+  </section>
+
+  <section class="rung">
+    <div class="marker"><span class="numeral">1</span><span class="tick"></span></div>
+    <div>
+      <h2>Prompt and retrieve before you train</h2>
+      <div class="who">Weeks one to four &middot; RAG, system prompts, tool use</div>
+      <p>Stuff the documentation into a vector store, write a hard system prompt, wire in tools. This rung exists because <strong>fine-tuning teaches style and format far better than it teaches facts</strong>. Facts that change belong in retrieval. People who skip this rung usually come back to it after their first fine-tune hallucinates an API that doesn't exist.</p>
+      <div class="facts">
+        <dl class="fact"><dt>Data needed</dt><dd>Your docs, as-is</dd></dl>
+        <dl class="fact"><dt>Cost</dt><dd>Near zero</dd></dl>
+        <dl class="fact"><dt>Reversible?</dt><dd>Completely</dd></dl>
+      </div>
+      <div class="tools"><span class="tool">Embeddings + FAISS</span><span class="tool">Continue / Cursor</span><span class="tool">MCP</span></div>
+      <div class="out"><span class="lbl">What it gets you</span><p>A working system, and something better: the transcript log of every good exchange. That log is the raw material for rung 2. Start saving it now or you'll be generating synthetic data later.</p></div>
+    </div>
+  </section>
+
+  <section class="rung">
+    <div class="marker"><span class="numeral">2</span><span class="tick"></span></div>
+    <div>
+      <h2>Supervised fine-tuning with LoRA / QLoRA</h2>
+      <div class="who">The rung where most personal models live and stay</div>
+      <p>You freeze the base model and train small low-rank adapter matrices on maybe a thousand to five thousand prompt/response pairs in ChatML. QLoRA quantizes the frozen base to 4-bit first, which is the trick that put 32B-parameter training inside a single consumer card. Rough rule of thumb from the Unsloth docs: <strong>parameter count in billions ≈ GB of VRAM needed</strong> for QLoRA; plain 16-bit LoRA wants at least 4x that.</p>
+      <div class="facts">
+        <dl class="fact"><dt>Dataset</dt><dd>1K&ndash;5K clean examples</dd></dl>
+        <dl class="fact"><dt>Hardware</dt><dd>24GB card, or rented by the hour</dd></dl>
+        <dl class="fact"><dt>Cost</dt><dd>$5&ndash;$60 a run on Vast.ai / RunPod</dd></dl>
+        <dl class="fact"><dt>Wall time</dt><dd>1&ndash;8 hours</dd></dl>
+      </div>
+      <div class="tools"><span class="tool">Unsloth</span><span class="tool">Axolotl</span><span class="tool">TorchTune</span><span class="tool">HF TRL</span><span class="tool">PEFT</span></div>
+      <div class="out"><span class="lbl">What it gets you</span><p>A model that answers in your format, your idioms, your codebase's conventions, without a 6,000-token system prompt every call. Exported to GGUF, it drops straight back into Ollama. Community models like the Dolphin and OpenHermes families were built on exactly this and beat their base models on instruction-following benchmarks.</p></div>
+      <span class="youarehere">Your NetSuite Qwen plan sits here</span>
+    </div>
+  </section>
+
+  <section class="rung">
+    <div class="marker"><span class="numeral">3</span><span class="tick"></span></div>
+    <div>
+      <h2>Preference alignment: DPO and friends</h2>
+      <div class="who">Once SFT works and the outputs are almost right</div>
+      <p>SFT teaches the model what a good answer looks like. Preference training teaches it which of two plausible answers is better, from pairs you rank. DPO replaced the old reward-model-plus-PPO stack because it needs neither, and it's stable enough to run on the same rig as your SFT job. This is where a model stops writing technically-correct-but-wrong-flavored output.</p>
+      <div class="facts">
+        <dl class="fact"><dt>Dataset</dt><dd>5K&ndash;50K ranked pairs</dd></dl>
+        <dl class="fact"><dt>Prerequisite</dt><dd>A finished SFT checkpoint</dd></dl>
+        <dl class="fact"><dt>Cost</dt><dd>Comparable to SFT</dd></dl>
+      </div>
+      <div class="tools"><span class="tool">DPO</span><span class="tool">ORPO</span><span class="tool">KTO</span><span class="tool">TRL</span></div>
+      <div class="out"><span class="lbl">What it gets you</span><p>Zephyr-7B is the canonical demonstration: Hugging Face took Mistral, ran SFT on synthetic data, then DPO on AI-ranked preferences, and matched chat models roughly ten times its size. No human annotators.</p></div>
+    </div>
+  </section>
+
+  <section class="rung">
+    <div class="marker"><span class="numeral">4</span><span class="tick"></span></div>
+    <div>
+      <h2>Reinforcement learning with verifiable rewards</h2>
+      <div class="who">The current frontier for solo builders &middot; GRPO</div>
+      <p>Instead of showing the model correct answers, you write a reward function and let it discover its own path there. GRPO, from DeepSeek, dropped both the value model and the reward model, which is what made this affordable outside a lab. It only works when <strong>correctness is machine-checkable</strong>: does the code compile, does the test pass, does the JSON validate, is the math right. For a code-generation model that's a very natural fit.</p>
+      <div class="facts">
+        <dl class="fact"><dt>You supply</dt><dd>Questions + a reward function</dd></dl>
+        <dl class="fact"><dt>VRAM</dt><dd>Heavier; long context is the pinch point</dd></dl>
+        <dl class="fact"><dt>Reality check</dt><dd>Unsloth's kernels cut a 510GB job to ~54GB</dd></dl>
+      </div>
+      <div class="tools"><span class="tool">GRPO</span><span class="tool">vLLM rollouts</span><span class="tool">FP8 RL</span><span class="tool">Custom reward fns</span></div>
+      <div class="out"><span class="lbl">What it gets you</span><p>Models that learn <em>how</em> an answer is derived rather than memorizing the answer, and that show visible reasoning traces they were never explicitly taught. The DeepSeek-R1 distills are the loud example; hobbyists have reproduced small versions of the effect on a single rented card.</p></div>
+    </div>
+  </section>
+
+  <section class="rung">
+    <div class="marker"><span class="numeral">5</span><span class="tick"></span></div>
+    <div>
+      <h2>Pretraining from scratch</h2>
+      <div class="who">Educational, mostly &middot; and that's not an insult</div>
+      <p>Random weights, raw tokens, the whole pipeline. Almost nobody does this to get a useful model, because a $100 run buys you something roughly kindergarten-grade next to a base model you can download free. People do it to understand the machine. Karpathy's nanochat is the reference: tokenizer, pretraining, midtraining, SFT, RL, and a chat UI in about 8,000 lines, trained end to end in roughly four hours on an 8xH100 node for about a hundred dollars.</p>
+      <div class="facts">
+        <dl class="fact"><dt>Cost floor</dt><dd>~$100 for a toy; millions for a real one</dd></dl>
+        <dl class="fact"><dt>Data</dt><dd>Billions of tokens</dd></dl>
+        <dl class="fact"><dt>Honest verdict</dt><dd>Learn from it, don't ship it</dd></dl>
+      </div>
+      <div class="tools"><span class="tool">nanoGPT</span><span class="tool">nanochat</span><span class="tool">Megatron</span></div>
+      <div class="out"><span class="lbl">What it gets you</span><p>Complete intuition for every rung below it. Plenty of people who now do excellent fine-tuning work say the scratch run is what made the rest legible.</p></div>
+    </div>
+  </section>
+
+</div>
+
+<section class="rung" style="border-top:1px solid var(--rule);border-bottom:none">
+  <div class="marker"><span class="numeral">&#8592;</span></div>
+  <div>
+    <h2>The sideways rung: continued pretraining</h2>
+    <div class="who">Not higher, just different &middot; sits beside rung 2</div>
+    <p>If your domain has vocabulary and structure the base model has genuinely never seen, you can run further pretraining on raw domain text before any instruction tuning. It's the tool for teaching a model a language or a proprietary schema, not for teaching it to behave. The failure mode is catastrophic forgetting, so people mix in general data and keep learning rates low. Most personal projects don't need it; the ones that do usually know why.</p>
+  </div>
+</section>
+
+<section class="coda">
+  <h3>Patterns worth stealing</h3>
+  <ul>
+    <li><strong>Data quality beats every other variable.</strong> A thousand hand-checked examples routinely outperform fifty thousand scraped ones. The people with good models are the people with good datasets, and they usually spent 80% of the project there.</li>
+    <li><strong>Everyone stops earlier than they planned.</strong> The single most common shape of a successful personal model is rung 1 plus rung 2, and then years of quietly re-running rung 2 on a growing log.</li>
+    <li><strong>Evaluate before you celebrate.</strong> Hold out 10% of your data, plus a fixed set of real tasks you rerun after every checkpoint. Vibes-based evaluation is how people ship a fine-tune that's worse than the base model.</li>
+    <li><strong>Adapters are cheap, so branch freely.</strong> A LoRA adapter is a few hundred megabytes against a 20GB base. Keeping five and swapping them is normal practice, and merging back to GGUF is a last step, not a commitment.</li>
+    <li><strong>The loop is the product.</strong> The value compounds in the dataset, not the weights. Weights get thrown away every time a better base model drops, and one always does.</li>
+  </ul>
+</section>
+
+</div>
+</body>
+</html>
