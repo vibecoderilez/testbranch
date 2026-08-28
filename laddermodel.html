@@ -139,9 +139,9 @@ h1{
 <div class="wrap">
 
 <header class="masthead">
-  <div class="eyebrow">How people actually get there</div>
+  <div class="eyebrow">A field guide to the whole path</div>
   <h1>The Open Model Ladder</h1>
-  <p class="lede">Almost nobody training a personal open-source model starts by training a model. The progression is a ladder, and most people who end up with something genuinely useful climbed it in this order, stopping at whichever rung solved their problem. Each rung below: what you do, what it costs, and what came out of it in the wild.</p>
+  <p class="lede">Say you want an AI that knows your domain cold: your codebase, your documentation, your house conventions, running on hardware you control instead of somebody's metered API. There is a well-worn path from "I have never done this" to a working custom model, and it is a ladder, not a leap. Each rung below covers what you actually do, what it costs, what tools people use, and what has come out of it in the wild. Most people climb until the problem is solved and then stop.</p>
 </header>
 
 <div class="spine">
@@ -151,7 +151,7 @@ h1{
     <div>
       <h2>Run somebody else's weights</h2>
       <div class="who">Weekend one &middot; Ollama, LM Studio, llama.cpp</div>
-      <p>You pull a quantized open-weight model, run it locally, and find out what a 7B actually feels like next to a 32B. This rung is not throat-clearing. It's where you learn quantization tradeoffs, context limits, and what your hardware can hold, and most people discover here that the base model already does 80% of what they wanted.</p>
+      <p>Pull a quantized open-weight model, run it on your own machine, and find out what a 7B actually feels like next to a 32B. This rung is not throat-clearing. It is where you learn quantization tradeoffs, context limits, and what your hardware can physically hold. Plenty of people discover here that a good base model already does 80% of what they wanted.</p>
       <div class="facts">
         <dl class="fact"><dt>Hardware</dt><dd>Any 8&ndash;24GB GPU, or a unified-memory Mac</dd></dl>
         <dl class="fact"><dt>Cost</dt><dd>$0</dd></dl>
@@ -167,14 +167,14 @@ h1{
     <div>
       <h2>Prompt and retrieve before you train</h2>
       <div class="who">Weeks one to four &middot; RAG, system prompts, tool use</div>
-      <p>Stuff the documentation into a vector store, write a hard system prompt, wire in tools. This rung exists because <strong>fine-tuning teaches style and format far better than it teaches facts</strong>. Facts that change belong in retrieval. People who skip this rung usually come back to it after their first fine-tune hallucinates an API that doesn't exist.</p>
+      <p>Put your documentation into a vector store, write a strict system prompt, wire up tool calls. This rung exists because <strong>fine-tuning teaches style and format far better than it teaches facts</strong>. Anything that changes belongs in retrieval, not in weights. People who skip this rung tend to come back to it after their first fine-tune confidently invents an API that does not exist.</p>
       <div class="facts">
         <dl class="fact"><dt>Data needed</dt><dd>Your docs, as-is</dd></dl>
         <dl class="fact"><dt>Cost</dt><dd>Near zero</dd></dl>
         <dl class="fact"><dt>Reversible?</dt><dd>Completely</dd></dl>
       </div>
       <div class="tools"><span class="tool">Embeddings + FAISS</span><span class="tool">Continue / Cursor</span><span class="tool">MCP</span></div>
-      <div class="out"><span class="lbl">What it gets you</span><p>A working system, and something better: the transcript log of every good exchange. That log is the raw material for rung 2. Start saving it now or you'll be generating synthetic data later.</p></div>
+      <div class="out"><span class="lbl">What it gets you</span><p>A working agent, and something more valuable: a transcript log of every exchange that went well. That log is the raw material for rung 2. Start saving it on day one, or you will be paying to generate synthetic data later.</p></div>
     </div>
   </section>
 
@@ -183,7 +183,7 @@ h1{
     <div>
       <h2>Supervised fine-tuning with LoRA / QLoRA</h2>
       <div class="who">The rung where most personal models live and stay</div>
-      <p>You freeze the base model and train small low-rank adapter matrices on maybe a thousand to five thousand prompt/response pairs in ChatML. QLoRA quantizes the frozen base to 4-bit first, which is the trick that put 32B-parameter training inside a single consumer card. Rough rule of thumb from the Unsloth docs: <strong>parameter count in billions ≈ GB of VRAM needed</strong> for QLoRA; plain 16-bit LoRA wants at least 4x that.</p>
+      <p>Freeze the base model and train small low-rank adapter matrices on a thousand to five thousand prompt-and-response pairs, formatted as chat messages. QLoRA quantizes the frozen base to 4-bit first, which is the trick that put 32-billion-parameter training inside a single consumer graphics card. Rough rule of thumb from the Unsloth docs: <strong>parameter count in billions is roughly the GB of VRAM you need</strong> for QLoRA; plain 16-bit LoRA wants at least four times that.</p>
       <div class="facts">
         <dl class="fact"><dt>Dataset</dt><dd>1K&ndash;5K clean examples</dd></dl>
         <dl class="fact"><dt>Hardware</dt><dd>24GB card, or rented by the hour</dd></dl>
@@ -191,8 +191,7 @@ h1{
         <dl class="fact"><dt>Wall time</dt><dd>1&ndash;8 hours</dd></dl>
       </div>
       <div class="tools"><span class="tool">Unsloth</span><span class="tool">Axolotl</span><span class="tool">TorchTune</span><span class="tool">HF TRL</span><span class="tool">PEFT</span></div>
-      <div class="out"><span class="lbl">What it gets you</span><p>A model that answers in your format, your idioms, your codebase's conventions, without a 6,000-token system prompt every call. Exported to GGUF, it drops straight back into Ollama. Community models like the Dolphin and OpenHermes families were built on exactly this and beat their base models on instruction-following benchmarks.</p></div>
-      <span class="youarehere">Your NetSuite Qwen plan sits here</span>
+      <div class="out"><span class="lbl">What it gets you</span><p>A model that answers in your format, your idioms, your conventions, without a six-thousand-token system prompt on every single call. Export it to GGUF and it drops straight back into Ollama and into any editor that speaks a local API. The Dolphin and OpenHermes model families were built exactly this way and beat their base models on instruction-following benchmarks.</p></div>
     </div>
   </section>
 
@@ -201,7 +200,7 @@ h1{
     <div>
       <h2>Preference alignment: DPO and friends</h2>
       <div class="who">Once SFT works and the outputs are almost right</div>
-      <p>SFT teaches the model what a good answer looks like. Preference training teaches it which of two plausible answers is better, from pairs you rank. DPO replaced the old reward-model-plus-PPO stack because it needs neither, and it's stable enough to run on the same rig as your SFT job. This is where a model stops writing technically-correct-but-wrong-flavored output.</p>
+      <p>Supervised tuning teaches a model what a good answer looks like. Preference training teaches it which of two plausible answers is better, learned from pairs you rank yourself. DPO replaced the older reward-model-plus-PPO stack because it needs neither, and it is stable enough to run on the same rig as the previous rung. This is the step where a model stops producing output that is technically correct but somehow the wrong flavor.</p>
       <div class="facts">
         <dl class="fact"><dt>Dataset</dt><dd>5K&ndash;50K ranked pairs</dd></dl>
         <dl class="fact"><dt>Prerequisite</dt><dd>A finished SFT checkpoint</dd></dl>
@@ -217,14 +216,14 @@ h1{
     <div>
       <h2>Reinforcement learning with verifiable rewards</h2>
       <div class="who">The current frontier for solo builders &middot; GRPO</div>
-      <p>Instead of showing the model correct answers, you write a reward function and let it discover its own path there. GRPO, from DeepSeek, dropped both the value model and the reward model, which is what made this affordable outside a lab. It only works when <strong>correctness is machine-checkable</strong>: does the code compile, does the test pass, does the JSON validate, is the math right. For a code-generation model that's a very natural fit.</p>
+      <p>Instead of showing the model correct answers, you write a reward function and let it find its own path there. GRPO, from DeepSeek, dropped both the value model and the separate reward model, and that is what made this affordable outside a research lab. It only works when <strong>correctness is machine-checkable</strong>: does the code compile, does the test pass, does the JSON validate, is the arithmetic right. For anything code-shaped, that is a very natural fit.</p>
       <div class="facts">
         <dl class="fact"><dt>You supply</dt><dd>Questions + a reward function</dd></dl>
         <dl class="fact"><dt>VRAM</dt><dd>Heavier; long context is the pinch point</dd></dl>
         <dl class="fact"><dt>Reality check</dt><dd>Unsloth's kernels cut a 510GB job to ~54GB</dd></dl>
       </div>
       <div class="tools"><span class="tool">GRPO</span><span class="tool">vLLM rollouts</span><span class="tool">FP8 RL</span><span class="tool">Custom reward fns</span></div>
-      <div class="out"><span class="lbl">What it gets you</span><p>Models that learn <em>how</em> an answer is derived rather than memorizing the answer, and that show visible reasoning traces they were never explicitly taught. The DeepSeek-R1 distills are the loud example; hobbyists have reproduced small versions of the effect on a single rented card.</p></div>
+      <div class="out"><span class="lbl">What it gets you</span><p>Models that learn <em>how</em> an answer is derived rather than memorizing the answer itself, and that develop visible reasoning traces nobody explicitly taught them. The DeepSeek-R1 distills are the famous example. Individuals have reproduced small versions of the same effect on a single rented card.</p></div>
     </div>
   </section>
 
@@ -233,14 +232,14 @@ h1{
     <div>
       <h2>Pretraining from scratch</h2>
       <div class="who">Educational, mostly &middot; and that's not an insult</div>
-      <p>Random weights, raw tokens, the whole pipeline. Almost nobody does this to get a useful model, because a $100 run buys you something roughly kindergarten-grade next to a base model you can download free. People do it to understand the machine. Karpathy's nanochat is the reference: tokenizer, pretraining, midtraining, SFT, RL, and a chat UI in about 8,000 lines, trained end to end in roughly four hours on an 8xH100 node for about a hundred dollars.</p>
+      <p>Random weights, raw tokens, the entire pipeline. Almost nobody does this to obtain a useful model, because a hundred-dollar run buys you something roughly kindergarten-grade next to a base model you can download for free. People do it to understand the machine. Karpathy's nanochat is the reference implementation: tokenizer, pretraining, midtraining, supervised tuning, reinforcement learning and a chat interface in about eight thousand lines, trained end to end in roughly four hours on an eight-GPU node for about a hundred dollars.</p>
       <div class="facts">
         <dl class="fact"><dt>Cost floor</dt><dd>~$100 for a toy; millions for a real one</dd></dl>
         <dl class="fact"><dt>Data</dt><dd>Billions of tokens</dd></dl>
         <dl class="fact"><dt>Honest verdict</dt><dd>Learn from it, don't ship it</dd></dl>
       </div>
       <div class="tools"><span class="tool">nanoGPT</span><span class="tool">nanochat</span><span class="tool">Megatron</span></div>
-      <div class="out"><span class="lbl">What it gets you</span><p>Complete intuition for every rung below it. Plenty of people who now do excellent fine-tuning work say the scratch run is what made the rest legible.</p></div>
+      <div class="out"><span class="lbl">What it gets you</span><p>Complete intuition for every rung below it. Plenty of people doing excellent fine-tuning work say the from-scratch run is what made everything else legible.</p></div>
     </div>
   </section>
 
@@ -251,7 +250,7 @@ h1{
   <div>
     <h2>The sideways rung: continued pretraining</h2>
     <div class="who">Not higher, just different &middot; sits beside rung 2</div>
-    <p>If your domain has vocabulary and structure the base model has genuinely never seen, you can run further pretraining on raw domain text before any instruction tuning. It's the tool for teaching a model a language or a proprietary schema, not for teaching it to behave. The failure mode is catastrophic forgetting, so people mix in general data and keep learning rates low. Most personal projects don't need it; the ones that do usually know why.</p>
+    <p>If your domain has vocabulary and structure the base model has genuinely never encountered, you can run further pretraining on raw domain text before any instruction tuning. It is the tool for teaching a model a language or a proprietary schema, not for teaching it how to behave. The failure mode is catastrophic forgetting, so people mix in general-purpose data and keep learning rates low. Most personal projects never need this rung; the ones that do usually know exactly why.</p>
   </div>
 </section>
 
@@ -259,10 +258,10 @@ h1{
   <h3>Patterns worth stealing</h3>
   <ul>
     <li><strong>Data quality beats every other variable.</strong> A thousand hand-checked examples routinely outperform fifty thousand scraped ones. The people with good models are the people with good datasets, and they usually spent 80% of the project there.</li>
-    <li><strong>Everyone stops earlier than they planned.</strong> The single most common shape of a successful personal model is rung 1 plus rung 2, and then years of quietly re-running rung 2 on a growing log.</li>
-    <li><strong>Evaluate before you celebrate.</strong> Hold out 10% of your data, plus a fixed set of real tasks you rerun after every checkpoint. Vibes-based evaluation is how people ship a fine-tune that's worse than the base model.</li>
-    <li><strong>Adapters are cheap, so branch freely.</strong> A LoRA adapter is a few hundred megabytes against a 20GB base. Keeping five and swapping them is normal practice, and merging back to GGUF is a last step, not a commitment.</li>
-    <li><strong>The loop is the product.</strong> The value compounds in the dataset, not the weights. Weights get thrown away every time a better base model drops, and one always does.</li>
+    <li><strong>Everyone stops earlier than they planned.</strong> The most common shape of a successful custom model is rung 1 plus rung 2, followed by years of quietly re-running rung 2 against a growing log.</li>
+    <li><strong>Evaluate before you celebrate.</strong> Hold out ten percent of your data, and keep a fixed set of real tasks you rerun after every checkpoint. Evaluating by feel is how people ship a fine-tune that is quietly worse than the base model they started from.</li>
+    <li><strong>Adapters are cheap, so branch freely.</strong> A LoRA adapter is a few hundred megabytes against a twenty-gigabyte base. Keeping five of them around and swapping between them is normal practice, and merging back down to GGUF is a final step rather than a commitment.</li>
+    <li><strong>The loop is the product.</strong> Value compounds in the dataset, not in the weights. Weights get thrown out every time a better base model appears, and one always appears.</li>
   </ul>
 </section>
 
