@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Customer Payments</title>
+<style>
+  * { box-sizing: border-box; }
+  body { font-family: -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+         background: #f4f6f8; color: #1f2933; margin: 0; padding: 24px; }
+  h1 { font-size: 20px; margin: 0 0 16px; }
+  .card { background: #fff; border: 1px solid #e1e6eb; border-radius: 8px;
+          padding: 16px 20px; margin-bottom: 16px; max-width: 960px;
+          box-shadow: 0 1px 2px rgba(0,0,0,.04); }
+  .card h2 { font-size: 13px; text-transform: uppercase; letter-spacing: .05em;
+             color: #6b7685; margin: 0 0 12px; }
+  .row { display: flex; gap: 12px; flex-wrap: wrap; align-items: flex-end; }
+  label { display: block; font-size: 12px; color: #52606d; margin-bottom: 4px; }
+  input, select { font: inherit; padding: 8px 10px; border: 1px solid #cbd2d9;
+                  border-radius: 6px; background: #fff; }
+  input:focus, select:focus { outline: none; border-color: #0e7770; box-shadow: 0 0 0 2px rgba(14,119,112,.15); }
+  button { font: inherit; padding: 9px 16px; border: 0; border-radius: 6px;
+           background: #0e7770; color: #fff; cursor: pointer; }
+  button:hover { background: #0b5d58; }
+  button:disabled { background: #9aa5b1; cursor: default; }
+  button.ghost { background: #e4e9ee; color: #3e4c59; }
+  button.ghost:hover { background: #d3dae2; }
+  #custList { list-style: none; margin: 8px 0 0; padding: 0;
+              border: 1px solid #e1e6eb; border-radius: 6px; display: none; }
+  #custList li { padding: 9px 12px; cursor: pointer; border-bottom: 1px solid #f0f3f6; }
+  #custList li:last-child { border-bottom: 0; }
+  #custList li:hover { background: #f0f7f6; }
+  #custList li .num { color: #6b7685; font-size: 12px; margin-left: 6px; }
+  #custList li .bal { float: right; color: #6b7685; font-size: 12px; }
+  table { width: 100%; border-collapse: collapse; font-size: 14px; }
+  th { text-align: left; font-size: 11px; text-transform: uppercase; letter-spacing: .04em;
+       color: #6b7685; padding: 8px 10px; border-bottom: 2px solid #e1e6eb; }
+  td { padding: 9px 10px; border-bottom: 1px solid #f0f3f6; }
+  td.r, th.r { text-align: right; }
+  tbody tr:hover { background: #f8fafc; }
+  tbody tr.checked { background: #eef7f5; }
+  .muted { color: #9aa5b1; }
+  #footTotal { font-weight: 600; color: #0e7770; }
+  #status { margin: 0; font-size: 14px; }
+  #status.err { color: #ba2525; }
+  #status.ok { color: #0f7b3f; }
+  #status a { color: #0e7770; }
+  .hint { font-size: 12px; color: #9aa5b1; margin-top: 8px; }
+</style>
+</head>
+<body>
+<h1>Customer Payments</h1>
+
+<div class="card">
+  <h2>1 &middot; Customer</h2>
+  <div class="row">
+    <div style="flex:1; min-width:260px;">
+      <label for="custQ">Name or customer number</label>
+      <input id="custQ" placeholder="Start typing…" autocomplete="off">
+    </div>
+    <button id="custBtn">Search</button>
+  </div>
+  <ul id="custList"></ul>
+  <div id="custInfo" class="hint"></div>
+</div>
+
+<div class="card">
+  <h2>2 &middot; Invoices to pay</h2>
+  <table id="invTable">
+    <thead>
+      <tr>
+        <th style="width:32px;"><input type="checkbox" id="selAll"></th>
+        <th>Invoice</th><th>Date</th>
+        <th class="r">Total</th><th class="r">Applied</th><th class="r">Remaining</th>
+      </tr>
+    </thead>
+    <tbody id="invBody"></tbody>
+    <tfoot>
+      <tr><td colspan="5" class="r muted">Selected amount</td><td class="r" id="footTotal">$0.00</td></tr>
+    </tfoot>
+  </table>
+  <div id="invHint" class="hint">Select a customer to load open invoices.</div>
+</div>
+
+<div class="card">
+  <h2>3 &middot; Payment details</h2>
+  <div class="row">
+    <div>
+      <label for="payDate">Payment date</label>
+      <input type="date" id="payDate">
+    </div>
+    <div>
+      <label for="method">Payment method</label>
+      <select id="method"></select>
+    </div>
+    <div style="flex:1; min-width:200px;">
+      <label for="memo">Reference / memo (check no., txn id…)</label>
+      <input id="memo" placeholder="Optional">
+    </div>
+  </div>
+</div>
+
+<div class="card">
+  <button id="payBtn" disabled>Accept Payment</button>
+  <p id="status"></p>
+</div>
+
+<script>
+(function () {
+  var customer = null;
+  var invoices = [];
+
+  function api(action, params) {
+    var qs = new URLSearchParams(window.location.search);
+    qs.set('action', action);
+    Object.keys(params || {}).forEach(function (k) { qs.set(k, params[k]); });
+    return fetch(window.location.pathname + '?' + qs.toString(), { method: 'POST' })
+      .then(function (r) { return r.json(); });
+  }
+
+  function fmt(n) {
+    return (n < 0 ? '-' : '') + '$' + Math.abs(n).toLocaleString('en-US',
+      { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+  }
+
+  // --- Customer search ---
+  function loadCustomers() {
+    api('customers', { q: document.getElementById('custQ').value.trim() })
+      .then(function (data) {
+        var ul = document.getElementById('custList');
+        ul.innerHTML = '';
+        if (!data.customers.length) {
+          ul.style.display = 'block';
+          ul.innerHTML = '<li class="muted" style="cursor:default;">No customers found</li>';
+          return;
+        }
+        data.customers.forEach(function (c) {
+          var li = document.createElement('li');
+          li.innerHTML = c.name + '<span class="num">' + c.number + '</span>' +
+                         '<span class="bal">' + fmt(c.balance) + '</span>';
+          li.onclick = function () { selectCustomer(c); };
+          ul.appendChild(li);
+        });
+        ul.style.display = 'block';
+      });
+  }
+
+  function selectCustomer(c) {
+    customer = c;
+    document.getElementById('custQ').value = c.name;
+    document.getElementById('custList').style.display = 'none';
+    document.getElementById('custInfo').textContent =
+      'Selected: ' + c.name + ' (AR balance ' + fmt(c.balance) + ')';
+    document.getElementById('invHint').textContent = 'Loading invoices…';
+    document.getElementById('invBody').innerHTML = '';
+
+    api('invoices', { customer: c.id }).then(function (data) {
+      invoices = data.invoices;
+      renderInvoices();
+    });
+  }
+
+  // --- Invoice table ---
+  function renderInvoices() {
+    var body = document.getElementById('invBody');
+    var hint = document.getElementById('invHint');
+    body.innerHTML = '';
+    if (!invoices.length) {
+      hint.textContent = 'No open invoices for this customer.';
+      return;
+    }
+    hint.textContent = '';
+    invoices.forEach(function (inv) {
+      var tr = document.createElement('tr');
+      tr.innerHTML =
+        '<td><input type="checkbox" class="invChk" data-id="' + inv.id + '"></td>' +
+        '<td><a href="/app/common/transaction/transaction.nl?id=' + inv.id + '" ' +
+        'target="_blank">' + inv.number + '</a></td>' +
+        '<td class="muted">' + inv.date + '</td>' +
+        '<td class="r">' + fmt(inv.total) + '</td>' +
+        '<td class="r muted">' + fmt(inv.applied) + '</td>' +
+        '<td class="r">' + fmt(inv.remaining) + '</td>';
+      tr.querySelector('.invChk').addEventListener('change', updateTotals);
+      body.appendChild(tr);
+    });
+  }
+
+  function updateTotals() {
+    var total = 0;
+    document.querySelectorAll('.invChk').forEach(function (chk) {
+      var tr = chk.closest('tr');
+      tr.classList.toggle('checked', chk.checked);
+      if (chk.checked) {
+        var inv = invoices.find(function (i) { return i.id === chk.dataset.id; });
+        total += inv.remaining;
+      }
+    });
+    document.getElementById('footTotal').textContent = fmt(total);
+    document.getElementById('payBtn').disabled = !document.querySelector('.invChk:checked');
+  }
+
+  // --- Payment methods ---
+  api('methods', {}).then(function (data) {
+    var sel = document.getElementById('method');
+    data.methods.forEach(function (m) {
+      var opt = document.createElement('option');
+      opt.value = m.id;
+      opt.textContent = m.name;
+      sel.appendChild(opt);
+    });
+  });
+
+  // --- Submit ---
+  document.getElementById('payBtn').onclick = function () {
+    var lines = [];
+    document.querySelectorAll('.invChk:checked').forEach(function (chk) {
+      var inv = invoices.find(function (i) { return i.id === chk.dataset.id; });
+      lines.push({ invoiceId: inv.id, amount: inv.remaining });
+    });
+    var btn = document.getElementById('payBtn');
+    btn.disabled = true;
+    btn.textContent = 'Processing…';
+    var status = document.getElementById('status');
+    status.className = '';
+    status.textContent = '';
+
+    api('pay', {
+      customer: customer.id,
+      method: document.getElementById('method').value,
+      date: document.getElementById('payDate').value,
+      memo: document.getElementById('memo').value.trim(),
+      lines: JSON.stringify(lines)
+    }).then(function (res) {
+      btn.textContent = 'Accept Payment';
+      if (res.ok) {
+        status.className = 'ok';
+        status.innerHTML = 'Recorded <b>' + fmt(res.total) + '</b> against ' +
+          res.paymentIds.length + ' invoice(s). Payments: ' +
+          res.paymentIds.map(function (id) {
+            return '<a target="_blank" href="/app/common/transaction/transaction.nl?id=' + id + '">#' + id + '</a>';
+          }).join(', ');
+        // refresh invoice list
+        api('invoices', { customer: customer.id }).then(function (data) {
+          invoices = data.invoices;
+          renderInvoices();
+        });
+      } else {
+        status.className = 'err';
+        status.textContent = res.error || 'Something went wrong.';
+      }
+      btn.disabled = !document.querySelector('.invChk:checked');
+    }).catch(function (e) {
+      status.className = 'err';
+      status.textContent = 'Request failed: ' + e;
+      btn.disabled = false;
+      btn.textContent = 'Accept Payment';
+    });
+  };
+
+  // --- Wiring ---
+  document.getElementById('custBtn').onclick = loadCustomers;
+  document.getElementById('custQ').addEventListener('keydown', function (e) {
+    if (e.key === 'Enter') loadCustomers();
+  });
+  document.getElementById('selAll').addEventListener('change', function (e) {
+    document.querySelectorAll('.invChk').forEach(function (c) { c.checked = e.target.checked; });
+    updateTotals();
+  });
+  document.getElementById('payDate').value = new Date().toISOString().substring(0, 10);
+})();
+</script>
+</body>
+</html>
