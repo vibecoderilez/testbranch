@@ -58,7 +58,6 @@
       linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
       linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
     background-size: 44px 44px;
-    -webkit-mask-image: radial-gradient(ellipse at 50% 0%, black, transparent 75%);
     mask-image: radial-gradient(ellipse at 50% 0%, black, transparent 75%);
   }
 
@@ -68,7 +67,6 @@
   /* ---------- Nav ---------- */
   nav {
     position: sticky; top: 0; z-index: 50;
-    -webkit-backdrop-filter: blur(14px);
     backdrop-filter: blur(14px);
     background: rgba(5,6,15,0.55);
     border-bottom: 1px solid var(--border);
@@ -167,7 +165,7 @@
   .model .meta { color: var(--accent-2); font-size: 13px; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 16px; }
   .model ul { list-style: none; }
   .model li { padding: 8px 0 8px 26px; position: relative; color: var(--muted); font-size: 15px; }
-  .model li::before { content: "\25B8"; position: absolute; left: 4px; color: var(--accent); }
+  .model li::before { content: "▸"; position: absolute; left: 4px; color: var(--accent); }
 
   /* ---------- Callout ---------- */
   .callout {
@@ -206,11 +204,11 @@
 
   <header class="hero">
     <div class="wrap">
-      <span class="eyebrow reveal">A Plain-English Guide</span>
+      <span class="eyebrow reveal">🚀 A Plain-English Guide</span>
       <h1 class="reveal">The Benefits of<br />Creating Your Own AI Agent</h1>
-      <p class="subtitle reveal">Big AI companies want you to rent their brains forever. But there's a smarter path: teaching a small, capable model to do <em>your</em> job, <em>your</em> way &mdash; cheaper, faster, and fully under your control. Here's why fine-tuning is the way of the future.</p>
+      <p class="subtitle reveal">Big AI companies want you to rent their brains forever. But there's a smarter path: teaching a small, capable model to do <em>your</em> job, <em>your</em> way — cheaper, faster, and fully under your control. Here's why fine-tuning is the way of the future.</p>
       <div class="cta-row reveal">
-        <a href="#why" class="btn btn-primary">Start Reading &darr;</a>
+        <a href="#why" class="btn btn-primary">Start Reading ↓</a>
         <a href="#showdown" class="btn btn-ghost">See the Showdown</a>
       </div>
     </div>
@@ -220,11 +218,11 @@
   <section id="why">
     <div class="wrap">
       <div class="kicker reveal">Start Here</div>
-      <h2 class="reveal">Wait &mdash; what even <em>is</em> a "fine-tuned" AI?</h2>
+      <h2 class="reveal">Wait — what even <em>is</em> a "fine-tuned" AI?</h2>
       <div class="explainer reveal">
-        <p>Imagine you hire a brilliant new graduate. They know a little about <strong>everything</strong> &mdash; history, cooking, coding, poetry &mdash; but nothing specific about how <strong>your</strong> business works. That's a general AI model like ChatGPT or Claude out of the box.</p>
-        <p>Now imagine you spend a few weeks training that graduate on your company's documents, your tone of voice, and your exact tasks. Suddenly they're not a generalist anymore &mdash; they're <strong>your</strong> specialist. That training process is what we call <strong>fine-tuning</strong>.</p>
-        <p>The exciting part: you no longer need a giant, expensive AI to get expert results. You take a smaller, free, open model &mdash; like <strong>Qwen</strong> or <strong>Gemma</strong> &mdash; and teach it your niche. On that narrow job, it can quietly <strong>beat</strong> the massive models that cost a fortune to use.</p>
+        <p>Imagine you hire a brilliant new graduate. They know a little about <strong>everything</strong> — history, cooking, coding, poetry — but nothing specific about how <strong>your</strong> business works. That's a general AI model like ChatGPT or Claude out of the box.</p>
+        <p>Now imagine you spend a few weeks training that graduate on your company's documents, your tone of voice, and your exact tasks. Suddenly they're not a generalist anymore — they're <strong>your</strong> specialist. That training process is what we call <strong>fine-tuning</strong>.</p>
+        <p>The exciting part: you no longer need a giant, expensive AI to get expert results. You take a smaller, free, open model — like <strong>Qwen</strong> or <strong>Gemma</strong> — and teach it your niche. On that narrow job, it can quietly <strong>beat</strong> the massive models that cost a fortune to use. 🎯</p>
       </div>
     </div>
   </section>
@@ -237,34 +235,34 @@
       <p class="lead reveal">You're not just saving money (though you are). You're taking ownership of a tool that gets better the more you use it.</p>
       <div class="cards">
         <div class="card reveal">
-          <span class="ic">&#128184;</span>
+          <span class="ic">💸</span>
           <h3>Dramatically cheaper</h3>
-          <p>Once a small model is trained and running on your own hardware, each answer can cost a fraction of what the big providers charge &mdash; up to <strong>10&ndash;100&times; lower</strong> per token on specialized tasks.</p>
+          <p>Once a small model is trained and running on your own hardware, each answer can cost a fraction of what the big providers charge — up to <strong>10–100× lower</strong> per token on specialized tasks.</p>
         </div>
         <div class="card reveal">
-          <span class="ic">&#128274;</span>
+          <span class="ic">🔒</span>
           <h3>Your data stays yours</h3>
-          <p>An open model can run entirely on your own machines. Sensitive documents never leave the building &mdash; no third party stores or sees your prompts. Perfect for privacy-heavy work.</p>
+          <p>An open model can run entirely on your own machines. Sensitive documents never leave the building — no third party stores or sees your prompts. Perfect for privacy-heavy work.</p>
         </div>
         <div class="card reveal">
-          <span class="ic">&#127919;</span>
+          <span class="ic">🎯</span>
           <h3>Expert at your one job</h3>
           <p>A specialist beats a generalist. Focused fine-tuning has been shown to <strong>outperform the largest closed models by ~60%</strong> on narrow, real-world tasks like medical scribing.</p>
         </div>
         <div class="card reveal">
-          <span class="ic">&#9889;</span>
+          <span class="ic">⚡</span>
           <h3>Faster answers</h3>
-          <p>Smaller models respond with far lower latency &mdash; often an order of magnitude quicker &mdash; because there's simply less to compute for the job you actually need done.</p>
+          <p>Smaller models respond with far lower latency — often an order of magnitude quicker — because there's simply less to compute for the job you actually need done.</p>
         </div>
         <div class="card reveal">
-          <span class="ic">&#129513;</span>
+          <span class="ic">🧩</span>
           <h3>You own the whole thing</h3>
           <p>No surprise price hikes, no model being retired out from under you, no rate limits. You control the weights, the updates, and the roadmap. It's <em>your</em> agent.</p>
         </div>
         <div class="card reveal">
-          <span class="ic">&#128269;</span>
-          <h3>Transparent &amp; auditable</h3>
-          <p>With full access to the model, you can trace and explain why it produced an answer &mdash; a level of accountability closed "black box" APIs simply can't offer.</p>
+          <span class="ic">🔍</span>
+          <h3>Transparent & auditable</h3>
+          <p>With full access to the model, you can trace and explain why it produced an answer — a level of accountability closed "black box" APIs simply can't offer.</p>
         </div>
       </div>
     </div>
@@ -274,9 +272,9 @@
   <section>
     <div class="wrap">
       <div class="stats">
-        <div class="stat reveal"><div class="num">~22GB</div><div class="lbl">VRAM to fine-tune a 27B model with QLoRA &mdash; a single consumer GPU</div></div>
+        <div class="stat reveal"><div class="num">~22GB</div><div class="lbl">VRAM to fine-tune a 27B model with QLoRA — a single consumer GPU</div></div>
         <div class="stat reveal"><div class="num">60%</div><div class="lbl">Better accuracy small fine-tuned models hit vs. giant closed models on niche tasks</div></div>
-        <div class="stat reveal"><div class="num">10&ndash;100&times;</div><div class="lbl">Lower inference cost per token once you self-host</div></div>
+        <div class="stat reveal"><div class="num">10–100×</div><div class="lbl">Lower inference cost per token once you self-host</div></div>
         <div class="stat reveal"><div class="num">&lt; 1hr</div><div class="lbl">Typical fine-tuning run on a few hundred good examples</div></div>
       </div>
     </div>
@@ -286,8 +284,8 @@
   <section id="showdown">
     <div class="wrap">
       <div class="kicker reveal">The Showdown</div>
-      <h2 class="reveal">The little guys vs. the giants</h2>
-      <p class="lead reveal">The frontier models &mdash; Claude Opus and GPT-5 &mdash; are astonishing all-rounders. But for a specific, repeated job, a fine-tuned ~30B model like Qwen or Gemma changes the math entirely. Here's the honest head-to-head.</p>
+      <h2 class="reveal">The little guys vs. the giants ⚔️</h2>
+      <p class="lead reveal">The frontier models — Claude Opus and GPT-5 — are astonishing all-rounders. But for a specific, repeated job, a fine-tuned ~30B model like Qwen or Gemma changes the math entirely. Here's the honest head-to-head.</p>
       <div class="table-wrap reveal">
         <table>
           <thead>
@@ -298,18 +296,18 @@
             </tr>
           </thead>
           <tbody>
-            <tr><td>Cost per token</td><td class="tag-win">Pennies &mdash; self-hosted</td><td>$5&ndash;$25 / M tokens</td></tr>
-            <tr><td>Runs on your hardware</td><td class="tag-win">Yes &mdash; one consumer GPU</td><td>No &mdash; cloud API only</td></tr>
-            <tr><td>Data privacy</td><td class="tag-win">Fully private, on-prem</td><td>Sent to provider's servers</td></tr>
-            <tr><td>Custom to your task</td><td class="tag-win">Trained on your data</td><td>Generic, prompt-only</td></tr>
-            <tr><td>Raw general knowledge</td><td>Strong, but narrower</td><td class="tag-big">Broadest &amp; deepest</td></tr>
-            <tr><td>Complex open-ended reasoning</td><td>Very good in-domain</td><td class="tag-big">Best-in-class</td></tr>
-            <tr><td>You own &amp; control it</td><td class="tag-win">100% yours</td><td>You rent access</td></tr>
-            <tr><td>Vendor lock-in</td><td class="tag-win">None</td><td>High</td></tr>
+            <tr><td>Cost per token</td><td class="tag-win">Pennies — self-hosted ✅</td><td>$5–$25 / M tokens 💰</td></tr>
+            <tr><td>Runs on your hardware</td><td class="tag-win">Yes — one consumer GPU ✅</td><td>No — cloud API only</td></tr>
+            <tr><td>Data privacy</td><td class="tag-win">Fully private, on-prem ✅</td><td>Sent to provider's servers</td></tr>
+            <tr><td>Custom to your task</td><td class="tag-win">Trained on your data ✅</td><td>Generic, prompt-only</td></tr>
+            <tr><td>Raw general knowledge</td><td>Strong, but narrower</td><td class="tag-big">Broadest & deepest 🏆</td></tr>
+            <tr><td>Complex open-ended reasoning</td><td>Very good in-domain</td><td class="tag-big">Best-in-class 🏆</td></tr>
+            <tr><td>You own & control it</td><td class="tag-win">100% yours ✅</td><td>You rent access</td></tr>
+            <tr><td>Vendor lock-in</td><td class="tag-win">None ✅</td><td>High</td></tr>
           </tbody>
         </table>
       </div>
-      <p class="lead reveal" style="margin-top:28px;">The takeaway isn't "small always wins." It's this: <strong>you don't need a supercomputer's brain to answer your emails.</strong> Use the giants for open-ended exploration &mdash; and a fine-tuned specialist for the work you do a thousand times a day.</p>
+      <p class="lead reveal" style="margin-top:28px;">The takeaway isn't "small always wins." It's this: <strong>you don't need a supercomputer's brain to answer your emails.</strong> Use the giants for open-ended exploration — and a fine-tuned specialist for the work you do a thousand times a day.</p>
     </div>
   </section>
 
@@ -324,10 +322,10 @@
           <h3>Qwen (by Alibaba)</h3>
           <div class="meta">The Reasoning Powerhouse</div>
           <ul>
-            <li>27&ndash;32B versions rival flagship models on reasoning and coding benchmarks.</li>
-            <li>Huge context window (256K+ tokens) &mdash; reads whole codebases and long documents.</li>
+            <li>27–32B versions rival flagship models on reasoning and coding benchmarks.</li>
+            <li>Huge context window (256K+ tokens) — reads whole codebases and long documents.</li>
             <li>Built for "agentic" work: using tools, following multi-step instructions.</li>
-            <li>Apache-2.0 licensed &mdash; genuinely free for commercial use.</li>
+            <li>Apache-2.0 licensed — genuinely free for commercial use.</li>
             <li>Speaks 200+ languages out of the box.</li>
           </ul>
         </div>
@@ -336,10 +334,10 @@
           <div class="meta">The Efficient All-Rounder</div>
           <ul>
             <li>The most capable model that fits comfortably on one consumer GPU.</li>
-            <li>Native vision &mdash; it can understand images, not just text.</li>
+            <li>Native vision — it can understand images, not just text.</li>
             <li>Distilled from Google's Gemini research for strong quality-per-watt.</li>
             <li>Fine-tunes in under ~22GB of memory using QLoRA.</li>
-            <li>Great token value &mdash; cheaper to run at scale.</li>
+            <li>Great token value — cheaper to run at scale.</li>
           </ul>
         </div>
       </div>
@@ -351,35 +349,35 @@
     <div class="wrap">
       <div class="callout reveal">
         <div class="kicker">The Bottom Line</div>
-        <h2>Fine-tuning is the way of the future</h2>
-        <p>The era of renting one giant brain for every single task is ending. The efficient, independent path is to take a capable open model, teach it your world, and own the result. It's cheaper, it's private, it's faster &mdash; and it puts the power back in your hands.</p>
-        <a href="#" class="btn btn-primary">Take matters into your own hands &rarr;</a>
+        <h2>Fine-tuning is the way of the future 🔮</h2>
+        <p>The era of renting one giant brain for every single task is ending. The efficient, independent path is to take a capable open model, teach it your world, and own the result. It's cheaper, it's private, it's faster — and it puts the power back in your hands.</p>
+        <a href="#" class="btn btn-primary">Take matters into your own hands →</a>
       </div>
     </div>
   </section>
 
   <footer>
     <div class="wrap">
-      <p>Built for the future of efficient, independent AI. &nbsp;&middot;&nbsp; Fork it, tweak it, make it yours.</p>
+      <p>Built for the future of efficient, independent AI. ⚡ &nbsp;·&nbsp; Fork it, tweak it, make it yours.</p>
     </div>
   </footer>
 
   <script>
     // Scroll reveal
-    var io = new IntersectionObserver(function (entries) {
-      entries.forEach(function (e, i) {
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((e, i) => {
         if (e.isIntersecting) {
-          setTimeout(function () { e.target.classList.add('in'); }, (i % 4) * 80);
+          setTimeout(() => e.target.classList.add('in'), (i % 4) * 80);
           io.unobserve(e.target);
         }
       });
     }, { threshold: 0.12 });
-    document.querySelectorAll('.reveal').forEach(function (el) { io.observe(el); });
+    document.querySelectorAll('.reveal').forEach(el => io.observe(el));
 
     // Cursor-follow glow on cards
-    document.querySelectorAll('.card').forEach(function (card) {
-      card.addEventListener('pointermove', function (ev) {
-        var r = card.getBoundingClientRect();
+    document.querySelectorAll('.card').forEach(card => {
+      card.addEventListener('pointermove', (ev) => {
+        const r = card.getBoundingClientRect();
         card.style.setProperty('--mx', ((ev.clientX - r.left) / r.width * 100) + '%');
         card.style.setProperty('--my', ((ev.clientY - r.top) / r.height * 100) + '%');
       });
