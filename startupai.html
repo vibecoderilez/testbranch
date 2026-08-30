@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>The Benefits of Creating Your Own AI Agent</title>
+<meta name="description" content="A plain-language guide to why fine-tuning your own AI model is the efficient way of the future." />
+https://fonts.googleapis.com
+https://fonts.gstatic.com
+=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --bg: #05060f;
+    --bg-2: #0a0c1f;
+    --ink: #eef1ff;
+    --muted: #a3a9c9;
+    --accent: #7c5cff;
+    --accent-2: #00e0c6;
+    --accent-3: #ff5ca8;
+    --card: rgba(255, 255, 255, 0.04);
+    --border: rgba(255, 255, 255, 0.10);
+    --radius: 20px;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Inter', system-ui, sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+    overflow-x: hidden;
+    line-height: 1.7;
+  }
+
+  /* ---------- Animated aurora background ---------- */
+  .aurora {
+    position: fixed;
+    inset: 0;
+    z-index: -2;
+    background:
+      radial-gradient(60vw 60vw at 15% 10%, rgba(124, 92, 255, 0.35), transparent 60%),
+      radial-gradient(50vw 50vw at 85% 20%, rgba(0, 224, 198, 0.25), transparent 60%),
+      radial-gradient(55vw 55vw at 50% 100%, rgba(255, 92, 168, 0.22), transparent 60%),
+      var(--bg);
+    filter: blur(20px);
+    animation: drift 18s ease-in-out infinite alternate;
+  }
+  @keyframes drift {
+    0%   { transform: translate3d(0,0,0) scale(1); }
+    100% { transform: translate3d(0,-4%,0) scale(1.08); }
+  }
+  .grid-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    background-image:
+      linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+    background-size: 44px 44px;
+    mask-image: radial-gradient(ellipse at 50% 0%, black, transparent 75%);
+  }
+
+  /* ---------- Layout ---------- */
+  .wrap { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
+
+  /* ---------- Nav ---------- */
+  nav {
+    position: sticky; top: 0; z-index: 50;
+    backdrop-filter: blur(14px);
+    background: rgba(5,6,15,0.55);
+    border-bottom: 1px solid var(--border);
+  }
+  nav .wrap { display: flex; align-items: center; justify-content: space-between; height: 64px; }
+  .brand { display: flex; align-items: center; gap: 10px; font-family: 'Space Grotesk'; font-weight: 700; letter-spacing: .3px; }
+  .dot { width: 12px; height: 12px; border-radius: 50%; background: conic-gradient(from 0deg, var(--accent), var(--accent-2), var(--accent-3), var(--accent)); box-shadow: 0 0 18px var(--accent); animation: spin 6s linear infinite; }
+  @keyframes spin { to { transform: rotate(360deg); } }
+  .nav-links { display: flex; gap: 22px; font-size: 14px; }
+  .nav-links a { color: var(--muted); text-deco
