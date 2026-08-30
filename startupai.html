@@ -5,9 +5,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>The Benefits of Creating Your Own AI Agent</title>
 <meta name="description" content="A plain-language guide to why fine-tuning your own AI model is the efficient way of the future." />
-https://fonts.googleapis.com
-https://fonts.gstatic.com
-=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
 <style>
   :root {
     --bg: #05060f;
@@ -58,6 +58,7 @@ https://fonts.gstatic.com
       linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
       linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
     background-size: 44px 44px;
+    -webkit-mask-image: radial-gradient(ellipse at 50% 0%, black, transparent 75%);
     mask-image: radial-gradient(ellipse at 50% 0%, black, transparent 75%);
   }
 
@@ -67,6 +68,7 @@ https://fonts.gstatic.com
   /* ---------- Nav ---------- */
   nav {
     position: sticky; top: 0; z-index: 50;
+    -webkit-backdrop-filter: blur(14px);
     backdrop-filter: blur(14px);
     background: rgba(5,6,15,0.55);
     border-bottom: 1px solid var(--border);
@@ -76,4 +78,312 @@ https://fonts.gstatic.com
   .dot { width: 12px; height: 12px; border-radius: 50%; background: conic-gradient(from 0deg, var(--accent), var(--accent-2), var(--accent-3), var(--accent)); box-shadow: 0 0 18px var(--accent); animation: spin 6s linear infinite; }
   @keyframes spin { to { transform: rotate(360deg); } }
   .nav-links { display: flex; gap: 22px; font-size: 14px; }
-  .nav-links a { color: var(--muted); text-deco
+  .nav-links a { color: var(--muted); text-decoration: none; transition: color .2s; }
+  .nav-links a:hover { color: var(--ink); }
+  @media (max-width: 720px){ .nav-links { display: none; } }
+
+  /* ---------- Hero ---------- */
+  header.hero { padding: 110px 0 80px; text-align: center; position: relative; }
+  .eyebrow {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-size: 13px; letter-spacing: 2px; text-transform: uppercase;
+    color: var(--accent-2); border: 1px solid var(--border);
+    padding: 8px 16px; border-radius: 999px; background: var(--card);
+    margin-bottom: 28px;
+  }
+  h1 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: clamp(38px, 7vw, 74px);
+    line-height: 1.03; font-weight: 700; letter-spacing: -1.5px;
+    background: linear-gradient(120deg, #fff 20%, var(--accent) 55%, var(--accent-2) 90%);
+    -webkit-background-clip: text; background-clip: text; color: transparent;
+    margin-bottom: 22px;
+  }
+  .subtitle { max-width: 660px; margin: 0 auto 36px; font-size: clamp(17px, 2.2vw, 21px); color: var(--muted); }
+  .cta-row { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+  .btn {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-weight: 600; text-decoration: none; font-size: 15px;
+    padding: 14px 26px; border-radius: 14px; transition: transform .15s, box-shadow .25s;
+  }
+  .btn-primary { color: #08040f; background: linear-gradient(120deg, var(--accent-2), var(--accent)); box-shadow: 0 10px 40px rgba(124,92,255,.45); }
+  .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 16px 50px rgba(0,224,198,.5); }
+  .btn-ghost { color: var(--ink); border: 1px solid var(--border); background: var(--card); }
+  .btn-ghost:hover { transform: translateY(-2px); border-color: var(--accent); }
+
+  /* ---------- Section framing ---------- */
+  section { padding: 70px 0; }
+  .kicker { font-family: 'Space Grotesk'; color: var(--accent-3); font-weight: 600; letter-spacing: 2px; text-transform: uppercase; font-size: 13px; margin-bottom: 12px; }
+  h2 { font-family: 'Space Grotesk'; font-size: clamp(28px, 4.5vw, 44px); letter-spacing: -.5px; margin-bottom: 18px; line-height: 1.1; }
+  .lead { color: var(--muted); font-size: 18px; max-width: 720px; margin-bottom: 40px; }
+
+  /* ---------- Plain-language explainer ---------- */
+  .explainer { background: linear-gradient(180deg, rgba(124,92,255,.10), rgba(0,224,198,.04)); border: 1px solid var(--border); border-radius: var(--radius); padding: 34px; }
+  .explainer p { color: #d7dbf5; margin-bottom: 14px; }
+  .explainer strong { color: #fff; }
+
+  /* ---------- Benefit cards ---------- */
+  .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
+  .card {
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: var(--radius); padding: 28px; position: relative; overflow: hidden;
+    transition: transform .25s, border-color .25s, box-shadow .25s;
+  }
+  .card::before {
+    content: ""; position: absolute; inset: 0;
+    background: radial-gradient(400px 200px at var(--mx,50%) var(--my,0%), rgba(124,92,255,.18), transparent 60%);
+    opacity: 0; transition: opacity .3s;
+  }
+  .card:hover { transform: translateY(-6px); border-color: rgba(124,92,255,.5); box-shadow: 0 18px 50px rgba(0,0,0,.4); }
+  .card:hover::before { opacity: 1; }
+  .card .ic { font-size: 28px; margin-bottom: 16px; display: inline-block; }
+  .card h3 { font-family: 'Space Grotesk'; font-size: 20px; margin-bottom: 10px; }
+  .card p { color: var(--muted); font-size: 15px; }
+
+  /* ---------- Comparison table ---------- */
+  .table-wrap { overflow-x: auto; border-radius: var(--radius); border: 1px solid var(--border); }
+  table { width: 100%; border-collapse: collapse; min-width: 640px; background: rgba(255,255,255,.02); }
+  th, td { padding: 18px 20px; text-align: left; font-size: 15px; border-bottom: 1px solid var(--border); }
+  thead th { font-family: 'Space Grotesk'; font-size: 14px; letter-spacing: .5px; text-transform: uppercase; color: var(--accent-2); background: rgba(0,224,198,.05); }
+  tbody tr:hover { background: rgba(124,92,255,.06); }
+  td:first-child { color: #fff; font-weight: 600; }
+  .tag-win { color: var(--accent-2); font-weight: 600; }
+  .tag-big { color: var(--accent-3); }
+
+  /* ---------- Stat strip ---------- */
+  .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px,1fr)); gap: 20px; margin-top: 10px; }
+  .stat { text-align: center; padding: 28px 18px; border: 1px solid var(--border); border-radius: var(--radius); background: var(--card); }
+  .stat .num { font-family: 'Space Grotesk'; font-size: clamp(34px, 5vw, 48px); font-weight: 700; background: linear-gradient(120deg, var(--accent-2), var(--accent)); -webkit-background-clip: text; background-clip: text; color: transparent; }
+  .stat .lbl { color: var(--muted); font-size: 14px; margin-top: 6px; }
+
+  /* ---------- Model spotlight ---------- */
+  .spotlight { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  @media (max-width: 720px){ .spotlight { grid-template-columns: 1fr; } }
+  .model {
+    border: 1px solid var(--border); border-radius: var(--radius); padding: 28px;
+    background: linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.01));
+  }
+  .model h3 { font-family: 'Space Grotesk'; font-size: 22px; margin-bottom: 8px; }
+  .model .meta { color: var(--accent-2); font-size: 13px; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 16px; }
+  .model ul { list-style: none; }
+  .model li { padding: 8px 0 8px 26px; position: relative; color: var(--muted); font-size: 15px; }
+  .model li::before { content: "\25B8"; position: absolute; left: 4px; color: var(--accent); }
+
+  /* ---------- Callout ---------- */
+  .callout {
+    margin-top: 30px; text-align: center; padding: 50px 30px;
+    border-radius: 26px; border: 1px solid var(--border);
+    background: linear-gradient(120deg, rgba(124,92,255,.18), rgba(255,92,168,.12));
+  }
+  .callout h2 { margin-bottom: 14px; }
+  .callout p { color: #d7dbf5; max-width: 620px; margin: 0 auto 26px; font-size: 18px; }
+
+  /* ---------- Footer ---------- */
+  footer { border-top: 1px solid var(--border); padding: 40px 0; text-align: center; color: var(--muted); font-size: 14px; }
+  footer a { color: var(--accent-2); text-decoration: none; }
+
+  /* ---------- Reveal on scroll ---------- */
+  .reveal { opacity: 0; transform: translateY(28px); transition: opacity .7s ease, transform .7s ease; }
+  .reveal.in { opacity: 1; transform: none; }
+</style>
+</head>
+<body>
+  <div class="aurora"></div>
+  <div class="grid-overlay"></div>
+
+  <nav>
+    <div class="wrap">
+      <div class="brand"><span class="dot"></span> Your Own AI</div>
+      <div class="nav-links">
+        <a href="#why">Why</a>
+        <a href="#benefits">Benefits</a>
+        <a href="#showdown">Big vs. Small</a>
+        <a href="#models">The Models</a>
+        <a href="#future">The Future</a>
+      </div>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <div class="wrap">
+      <span class="eyebrow reveal">A Plain-English Guide</span>
+      <h1 class="reveal">The Benefits of<br />Creating Your Own AI Agent</h1>
+      <p class="subtitle reveal">Big AI companies want you to rent their brains forever. But there's a smarter path: teaching a small, capable model to do <em>your</em> job, <em>your</em> way &mdash; cheaper, faster, and fully under your control. Here's why fine-tuning is the way of the future.</p>
+      <div class="cta-row reveal">
+        <a href="#why" class="btn btn-primary">Start Reading &darr;</a>
+        <a href="#showdown" class="btn btn-ghost">See the Showdown</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- WHY -->
+  <section id="why">
+    <div class="wrap">
+      <div class="kicker reveal">Start Here</div>
+      <h2 class="reveal">Wait &mdash; what even <em>is</em> a "fine-tuned" AI?</h2>
+      <div class="explainer reveal">
+        <p>Imagine you hire a brilliant new graduate. They know a little about <strong>everything</strong> &mdash; history, cooking, coding, poetry &mdash; but nothing specific about how <strong>your</strong> business works. That's a general AI model like ChatGPT or Claude out of the box.</p>
+        <p>Now imagine you spend a few weeks training that graduate on your company's documents, your tone of voice, and your exact tasks. Suddenly they're not a generalist anymore &mdash; they're <strong>your</strong> specialist. That training process is what we call <strong>fine-tuning</strong>.</p>
+        <p>The exciting part: you no longer need a giant, expensive AI to get expert results. You take a smaller, free, open model &mdash; like <strong>Qwen</strong> or <strong>Gemma</strong> &mdash; and teach it your niche. On that narrow job, it can quietly <strong>beat</strong> the massive models that cost a fortune to use.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- BENEFITS -->
+  <section id="benefits">
+    <div class="wrap">
+      <div class="kicker reveal">The Payoff</div>
+      <h2 class="reveal">Why building your own is a genuinely smart move</h2>
+      <p class="lead reveal">You're not just saving money (though you are). You're taking ownership of a tool that gets better the more you use it.</p>
+      <div class="cards">
+        <div class="card reveal">
+          <span class="ic">&#128184;</span>
+          <h3>Dramatically cheaper</h3>
+          <p>Once a small model is trained and running on your own hardware, each answer can cost a fraction of what the big providers charge &mdash; up to <strong>10&ndash;100&times; lower</strong> per token on specialized tasks.</p>
+        </div>
+        <div class="card reveal">
+          <span class="ic">&#128274;</span>
+          <h3>Your data stays yours</h3>
+          <p>An open model can run entirely on your own machines. Sensitive documents never leave the building &mdash; no third party stores or sees your prompts. Perfect for privacy-heavy work.</p>
+        </div>
+        <div class="card reveal">
+          <span class="ic">&#127919;</span>
+          <h3>Expert at your one job</h3>
+          <p>A specialist beats a generalist. Focused fine-tuning has been shown to <strong>outperform the largest closed models by ~60%</strong> on narrow, real-world tasks like medical scribing.</p>
+        </div>
+        <div class="card reveal">
+          <span class="ic">&#9889;</span>
+          <h3>Faster answers</h3>
+          <p>Smaller models respond with far lower latency &mdash; often an order of magnitude quicker &mdash; because there's simply less to compute for the job you actually need done.</p>
+        </div>
+        <div class="card reveal">
+          <span class="ic">&#129513;</span>
+          <h3>You own the whole thing</h3>
+          <p>No surprise price hikes, no model being retired out from under you, no rate limits. You control the weights, the updates, and the roadmap. It's <em>your</em> agent.</p>
+        </div>
+        <div class="card reveal">
+          <span class="ic">&#128269;</span>
+          <h3>Transparent &amp; auditable</h3>
+          <p>With full access to the model, you can trace and explain why it produced an answer &mdash; a level of accountability closed "black box" APIs simply can't offer.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STATS -->
+  <section>
+    <div class="wrap">
+      <div class="stats">
+        <div class="stat reveal"><div class="num">~22GB</div><div class="lbl">VRAM to fine-tune a 27B model with QLoRA &mdash; a single consumer GPU</div></div>
+        <div class="stat reveal"><div class="num">60%</div><div class="lbl">Better accuracy small fine-tuned models hit vs. giant closed models on niche tasks</div></div>
+        <div class="stat reveal"><div class="num">10&ndash;100&times;</div><div class="lbl">Lower inference cost per token once you self-host</div></div>
+        <div class="stat reveal"><div class="num">&lt; 1hr</div><div class="lbl">Typical fine-tuning run on a few hundred good examples</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SHOWDOWN -->
+  <section id="showdown">
+    <div class="wrap">
+      <div class="kicker reveal">The Showdown</div>
+      <h2 class="reveal">The little guys vs. the giants</h2>
+      <p class="lead reveal">The frontier models &mdash; Claude Opus and GPT-5 &mdash; are astonishing all-rounders. But for a specific, repeated job, a fine-tuned ~30B model like Qwen or Gemma changes the math entirely. Here's the honest head-to-head.</p>
+      <div class="table-wrap reveal">
+        <table>
+          <thead>
+            <tr>
+              <th>What matters</th>
+              <th>Fine-tuned ~30B (Qwen / Gemma)</th>
+              <th>Giants (Opus 4.8 / GPT-5)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>Cost per token</td><td class="tag-win">Pennies &mdash; self-hosted</td><td>$5&ndash;$25 / M tokens</td></tr>
+            <tr><td>Runs on your hardware</td><td class="tag-win">Yes &mdash; one consumer GPU</td><td>No &mdash; cloud API only</td></tr>
+            <tr><td>Data privacy</td><td class="tag-win">Fully private, on-prem</td><td>Sent to provider's servers</td></tr>
+            <tr><td>Custom to your task</td><td class="tag-win">Trained on your data</td><td>Generic, prompt-only</td></tr>
+            <tr><td>Raw general knowledge</td><td>Strong, but narrower</td><td class="tag-big">Broadest &amp; deepest</td></tr>
+            <tr><td>Complex open-ended reasoning</td><td>Very good in-domain</td><td class="tag-big">Best-in-class</td></tr>
+            <tr><td>You own &amp; control it</td><td class="tag-win">100% yours</td><td>You rent access</td></tr>
+            <tr><td>Vendor lock-in</td><td class="tag-win">None</td><td>High</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="lead reveal" style="margin-top:28px;">The takeaway isn't "small always wins." It's this: <strong>you don't need a supercomputer's brain to answer your emails.</strong> Use the giants for open-ended exploration &mdash; and a fine-tuned specialist for the work you do a thousand times a day.</p>
+    </div>
+  </section>
+
+  <!-- MODELS -->
+  <section id="models">
+    <div class="wrap">
+      <div class="kicker reveal">Meet the Contenders</div>
+      <h2 class="reveal">The ~30B open models punching way above their weight</h2>
+      <p class="lead reveal">These are free to download, permissively licensed, and run on a single high-end desktop GPU. Two years ago this power required a data center.</p>
+      <div class="spotlight">
+        <div class="model reveal">
+          <h3>Qwen (by Alibaba)</h3>
+          <div class="meta">The Reasoning Powerhouse</div>
+          <ul>
+            <li>27&ndash;32B versions rival flagship models on reasoning and coding benchmarks.</li>
+            <li>Huge context window (256K+ tokens) &mdash; reads whole codebases and long documents.</li>
+            <li>Built for "agentic" work: using tools, following multi-step instructions.</li>
+            <li>Apache-2.0 licensed &mdash; genuinely free for commercial use.</li>
+            <li>Speaks 200+ languages out of the box.</li>
+          </ul>
+        </div>
+        <div class="model reveal">
+          <h3>Gemma (by Google)</h3>
+          <div class="meta">The Efficient All-Rounder</div>
+          <ul>
+            <li>The most capable model that fits comfortably on one consumer GPU.</li>
+            <li>Native vision &mdash; it can understand images, not just text.</li>
+            <li>Distilled from Google's Gemini research for strong quality-per-watt.</li>
+            <li>Fine-tunes in under ~22GB of memory using QLoRA.</li>
+            <li>Great token value &mdash; cheaper to run at scale.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FUTURE / CALLOUT -->
+  <section id="future">
+    <div class="wrap">
+      <div class="callout reveal">
+        <div class="kicker">The Bottom Line</div>
+        <h2>Fine-tuning is the way of the future</h2>
+        <p>The era of renting one giant brain for every single task is ending. The efficient, independent path is to take a capable open model, teach it your world, and own the result. It's cheaper, it's private, it's faster &mdash; and it puts the power back in your hands.</p>
+        <a href="#" class="btn btn-primary">Take matters into your own hands &rarr;</a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="wrap">
+      <p>Built for the future of efficient, independent AI. &nbsp;&middot;&nbsp; Fork it, tweak it, make it yours.</p>
+    </div>
+  </footer>
+
+  <script>
+    // Scroll reveal
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e, i) {
+        if (e.isIntersecting) {
+          setTimeout(function () { e.target.classList.add('in'); }, (i % 4) * 80);
+          io.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.12 });
+    document.querySelectorAll('.reveal').forEach(function (el) { io.observe(el); });
+
+    // Cursor-follow glow on cards
+    document.querySelectorAll('.card').forEach(function (card) {
+      card.addEventListener('pointermove', function (ev) {
+        var r = card.getBoundingClientRect();
+        card.style.setProperty('--mx', ((ev.clientX - r.left) / r.width * 100) + '%');
+        card.style.setProperty('--my', ((ev.clientY - r.top) / r.height * 100) + '%');
+      });
+    });
+  </script>
+</body>
+</html>
