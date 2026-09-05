@@ -1,0 +1,643 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Apex Automation builds and operates agentic AI systems for accounting, finance, and back-office teams.">
+<meta name="color-scheme" content="dark">
+<title>Apex Automation</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,200;0,6..72,300;0,6..72,400;1,6..72,300&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@300;400;500;600&display=swap">
+<style>
+:root{
+  --void:#07090C;
+  --panel:#0C1015;
+  --panel-2:#11161D;
+  --panel-3:#161D26;
+  --line:#1C242E;
+  --line-2:#28323E;
+  --text:#E9EDF2;
+  --text-2:#8C99A7;
+  --text-3:#58656F;
+  --gold:#E0B15C;
+  --gold-deep:#C4813A;
+  --gold-soft:rgba(224,177,92,.13);
+  --teal:#4FD1C5;
+  --teal-soft:rgba(79,209,197,.12);
+
+  --serif:"Newsreader",Georgia,serif;
+  --sans:"IBM Plex Sans",-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
+  --pad:clamp(20px,5vw,60px);
+  --grad-gold:linear-gradient(135deg,#F0CE8A 0%,#E0B15C 42%,#C4813A 100%);
+}
+*{box-sizing:border-box}
+body{margin:0}
+img{max-width:100%}
+[hidden]{display:none!important}
+html{scroll-behavior:smooth}
+body{
+  background:var(--void);color:var(--text);font-family:var(--sans);
+  font-size:16.5px;line-height:1.62;-webkit-font-smoothing:antialiased;overflow-x:hidden;
+}
+a{color:inherit}
+h1,h2,h3,h4{margin:0;font-weight:400;text-wrap:balance}
+p{margin:0}
+.shell{max-width:1200px;margin:0 auto;padding:0 var(--pad)}
+
+/* ============ LOGO ============ */
+.logo-icon{display:block;flex:none;border-radius:22.3%;
+  box-shadow:0 1px 0 rgba(255,255,255,.09) inset,0 6px 18px -8px rgba(0,0,0,.9);}
+.logo{display:flex;align-items:center;gap:11px;text-decoration:none;margin-right:auto}
+.logo-word{font-family:var(--serif);font-size:20.5px;letter-spacing:-.012em;line-height:1;color:var(--text)}
+.logo-word em{font-style:italic;
+  background:var(--grad-gold);-webkit-background-clip:text;background-clip:text;color:transparent}
+.logo-sub{display:block;font-family:var(--mono);font-size:8.5px;letter-spacing:.24em;
+  text-transform:uppercase;color:var(--text-3);margin-top:4px}
+
+/* ============ MASTHEAD ============ */
+.mast{position:sticky;top:0;z-index:80;background:rgba(7,9,12,.78);
+  backdrop-filter:blur(18px) saturate(140%);border-bottom:1px solid var(--line)}
+.mast-in{display:flex;align-items:center;gap:24px;padding-block:13px}
+.mast nav{display:flex;gap:22px}
+.mast nav a{font-family:var(--mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;
+  color:var(--text-2);text-decoration:none;position:relative;padding-block:5px}
+.mast nav a::after{content:"";position:absolute;left:0;right:100%;bottom:0;height:1px;
+  background:var(--gold);transition:right .28s cubic-bezier(.22,1,.36,1)}
+.mast nav a:hover{color:var(--text)}
+.mast nav a:hover::after{right:0}
+@media (max-width:980px){.mast nav{display:none}}
+
+.btn{display:inline-flex;align-items:center;gap:9px;font-family:var(--mono);font-size:11.5px;
+  letter-spacing:.05em;text-transform:uppercase;text-decoration:none;padding:11px 18px;border-radius:6px;
+  background:var(--grad-gold);color:#0A0D11;border:1px solid transparent;font-weight:500;
+  transition:transform .2s cubic-bezier(.22,1,.36,1),box-shadow .2s ease,filter .2s ease;white-space:nowrap}
+.btn:hover{transform:translateY(-1.5px);box-shadow:0 10px 30px -12px rgba(224,177,92,.6);filter:brightness(1.06)}
+.btn.ghost{background:transparent;color:var(--text);border-color:var(--line-2)}
+.btn.ghost:hover{border-color:var(--gold);color:var(--gold);box-shadow:none}
+
+/* ============ EYEBROW ============ */
+.eyebrow{font-family:var(--mono);font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--gold);display:flex;align-items:center;gap:11px}
+.eyebrow::before{content:"";width:20px;height:1px;background:linear-gradient(90deg,transparent,var(--gold));flex:none}
+
+/* ============ HERO ============ */
+.hero{position:relative;padding-block:clamp(56px,8vw,104px) clamp(44px,6vw,80px);overflow:hidden}
+.hero::before{content:"";position:absolute;inset:-40% -20% auto -20%;height:620px;pointer-events:none;
+  background:radial-gradient(48% 55% at 22% 40%,rgba(224,177,92,.16),transparent 70%),
+             radial-gradient(40% 50% at 78% 22%,rgba(79,209,197,.09),transparent 70%)}
+.hero::after{content:"";position:absolute;inset:0;pointer-events:none;opacity:.5;
+  background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);
+  background-size:74px 74px;
+  mask-image:radial-gradient(70% 60% at 30% 30%,#000,transparent 75%);
+  -webkit-mask-image:radial-gradient(70% 60% at 30% 30%,#000,transparent 75%)}
+.hero > *{position:relative;z-index:1}
+.hero-grid{display:grid;grid-template-columns:minmax(0,1.02fr) minmax(0,.98fr);gap:clamp(30px,5vw,64px);align-items:start}
+@media (max-width:940px){.hero-grid{grid-template-columns:1fr;gap:40px}}
+.hero h1{font-family:var(--serif);font-size:clamp(40px,6.6vw,74px);line-height:1.0;
+  letter-spacing:-.028em;font-weight:200;margin-top:22px}
+.hero h1 em{font-style:italic;background:var(--grad-gold);-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero .lede{margin-top:24px;max-width:52ch;font-size:17.5px;color:var(--text-2);font-weight:300}
+.hero .lede strong{color:var(--text);font-weight:500}
+.hero-cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:32px}
+
+/* status chip */
+.status{display:inline-flex;align-items:center;gap:9px;padding:5px 12px 5px 9px;border-radius:100px;
+  border:1px solid var(--line-2);background:var(--panel-2);
+  font-family:var(--mono);font-size:10.5px;letter-spacing:.09em;text-transform:uppercase;color:var(--text-2)}
+.pulse{width:6px;height:6px;border-radius:50%;background:var(--teal);flex:none;
+  box-shadow:0 0 0 0 rgba(79,209,197,.6);animation:ping 2.4s ease-out infinite}
+@keyframes ping{70%,100%{box-shadow:0 0 0 8px rgba(79,209,197,0)}}
+@media (prefers-reduced-motion:reduce){.pulse,.flow{animation:none}}
+
+/* ============ CONSOLE ============ */
+.console{border:1px solid var(--line-2);border-radius:12px;overflow:hidden;
+  background:linear-gradient(180deg,var(--panel-2),var(--panel));
+  box-shadow:0 1px 0 rgba(255,255,255,.05) inset,0 34px 80px -40px rgba(0,0,0,1)}
+.console-bar{display:flex;align-items:center;gap:10px;padding:11px 14px;border-bottom:1px solid var(--line);
+  background:linear-gradient(180deg,rgba(255,255,255,.035),transparent)}
+.console-bar .ttl{font-family:var(--mono);font-size:11px;color:var(--text-2);letter-spacing:.05em}
+.console-bar .rt{margin-left:auto;font-family:var(--mono);font-size:10px;color:var(--text-3);letter-spacing:.08em}
+.feed{padding:4px 0;font-family:var(--mono);font-size:12.1px;line-height:1.5}
+.row{display:grid;grid-template-columns:50px 1fr auto;gap:12px;align-items:baseline;
+  padding:9px 15px;border-bottom:1px solid rgba(28,36,46,.6)}
+.row:last-child{border-bottom:0}
+.row .t{color:var(--text-3);font-variant-numeric:tabular-nums}
+.row .m{color:var(--text-2);min-width:0}
+.row .m b{color:var(--text);font-weight:500}
+.chip{font-size:9.5px;letter-spacing:.09em;text-transform:uppercase;padding:3px 7px;border-radius:4px;white-space:nowrap;border:1px solid transparent}
+.chip.ok{color:var(--teal);background:var(--teal-soft);border-color:rgba(79,209,197,.22)}
+.chip.hold{color:var(--gold);background:var(--gold-soft);border-color:rgba(224,177,92,.24)}
+.chip.run{color:var(--text-2);background:var(--panel-3);border-color:var(--line-2)}
+.console-foot{padding:11px 15px;border-top:1px solid var(--line);background:rgba(255,255,255,.02);
+  font-family:var(--mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--text-3);
+  display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+
+/* ============ MARQUEE / SCALE BAR ============ */
+.scale{border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:var(--panel)}
+.scale-in{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:1px;background:var(--line)}
+.scale-in > div{background:var(--panel);padding:26px var(--pad)}
+.scale .n{font-family:var(--serif);font-size:clamp(30px,3.6vw,42px);line-height:1;font-weight:200;
+  background:var(--grad-gold);-webkit-background-clip:text;background-clip:text;color:transparent;
+  font-variant-numeric:tabular-nums}
+.scale .k{font-family:var(--mono);font-size:10px;letter-spacing:.13em;text-transform:uppercase;
+  color:var(--text-3);margin-top:11px}
+
+/* ============ SECTIONS ============ */
+section{padding-block:clamp(58px,7.5vw,104px);border-top:1px solid var(--line);position:relative}
+.sec-head{max-width:70ch}
+.sec-head h2{font-family:var(--serif);font-size:clamp(28px,4vw,46px);line-height:1.1;
+  letter-spacing:-.024em;font-weight:200;margin-top:18px}
+.sec-head h2 em{font-style:italic;background:var(--grad-gold);-webkit-background-clip:text;background-clip:text;color:transparent}
+.sec-head p{margin-top:16px;color:var(--text-2);max-width:60ch;font-weight:300}
+
+/* ============ CAPS ============ */
+.caps{display:grid;grid-template-columns:repeat(auto-fit,minmax(268px,1fr));gap:18px;margin-top:44px}
+.cap{border:1px solid var(--line);border-radius:12px;padding:26px 24px;
+  background:linear-gradient(180deg,var(--panel-2),var(--panel));position:relative;overflow:hidden;
+  transition:border-color .25s ease,transform .25s cubic-bezier(.22,1,.36,1)}
+.cap::before{content:"";position:absolute;inset:0 0 auto 0;height:1px;
+  background:linear-gradient(90deg,transparent,rgba(224,177,92,.5),transparent);opacity:0;transition:opacity .25s ease}
+.cap:hover{border-color:var(--line-2);transform:translateY(-3px)}
+.cap:hover::before{opacity:1}
+.cap .gi{width:34px;height:34px;margin-bottom:16px;color:var(--gold)}
+.cap .ix{font-family:var(--mono);font-size:10px;letter-spacing:.13em;color:var(--text-3);text-transform:uppercase}
+.cap h3{font-family:var(--serif);font-size:22px;letter-spacing:-.012em;margin-top:8px}
+.cap p{font-size:14.6px;color:var(--text-2);margin-top:10px;font-weight:300}
+.cap ul{margin:16px 0 0;padding:0;list-style:none;display:flex;flex-direction:column;gap:7px}
+.cap li{font-family:var(--mono);font-size:11.5px;color:var(--text-3);padding-left:16px;position:relative}
+.cap li::before{content:"";position:absolute;left:0;top:8px;width:6px;height:1px;background:var(--gold)}
+
+/* ============ MESH ============ */
+.mesh-wrap{margin-top:44px;border:1px solid var(--line-2);border-radius:12px;overflow:hidden;
+  background:linear-gradient(180deg,var(--panel-2),var(--panel));
+  box-shadow:0 30px 70px -44px rgba(0,0,0,1)}
+.mesh-scroll{overflow-x:auto}
+.mesh-svg{display:block;width:100%;min-width:760px;height:auto}
+.flow{stroke-dasharray:5 8;animation:flow 2.6s linear infinite}
+@keyframes flow{to{stroke-dashoffset:-26}}
+.mesh-legend{display:flex;flex-wrap:wrap;gap:22px;padding:14px 18px;border-top:1px solid var(--line);
+  background:rgba(255,255,255,.02);font-family:var(--mono);font-size:10px;letter-spacing:.09em;
+  text-transform:uppercase;color:var(--text-3)}
+.mesh-legend b{display:inline-block;width:8px;height:8px;border-radius:2px;margin-right:8px;vertical-align:middle}
+
+/* ============ ROSTER ============ */
+.roster{margin-top:42px;border:1px solid var(--line-2);border-radius:12px;overflow:hidden;background:var(--panel)}
+.roster-head,.roster-row{display:grid;grid-template-columns:190px 1fr 150px 104px;gap:16px;padding:14px 20px;align-items:center}
+.roster-head{background:var(--panel-3);border-bottom:1px solid var(--line-2);
+  font-family:var(--mono);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--text-3)}
+.roster-row{border-bottom:1px solid var(--line);font-size:14.4px;transition:background .18s ease}
+.roster-row:last-child{border-bottom:0}
+.roster-row:hover{background:var(--panel-2)}
+.roster-row .nm{display:flex;align-items:center;gap:9px;font-family:var(--mono);font-size:12.5px;color:var(--text);font-weight:500}
+.roster-row .nm i{width:5px;height:5px;border-radius:50%;background:var(--teal);flex:none}
+.roster-row .ds{color:var(--text-2);font-size:14px;font-weight:300}
+.roster-row .sy{font-family:var(--mono);font-size:11px;color:var(--text-3)}
+@media (max-width:860px){
+  .roster-head{display:none}
+  .roster-row{grid-template-columns:1fr auto;gap:8px 12px;padding:17px 18px}
+  .roster-row .ds,.roster-row .sy{grid-column:1/-1}
+}
+
+/* ============ SPLIT ============ */
+.split{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(22px,3.5vw,42px);margin-top:44px;align-items:start}
+@media (max-width:900px){.split{grid-template-columns:1fr}}
+.stack{display:flex;flex-direction:column;gap:18px}
+.note{border:1px solid var(--line);border-radius:12px;padding:22px 24px;
+  background:linear-gradient(180deg,var(--panel-2),var(--panel))}
+.note h4{font-family:var(--mono);font-size:10.5px;letter-spacing:.13em;text-transform:uppercase;color:var(--gold);margin-bottom:10px}
+.note p{font-size:14.6px;color:var(--text-2);font-weight:300}
+.note p + p{margin-top:10px}
+pre{margin:0;padding:22px 24px;border:1px solid var(--line);border-radius:12px;background:#080B0F;
+  font-family:var(--mono);font-size:12.1px;line-height:1.78;color:var(--text-2);overflow-x:auto}
+pre .c{color:#4A5560}
+pre .k{color:var(--gold)}
+pre .v{color:var(--teal)}
+
+/* ============ SEQUENCE ============ */
+.seq{margin-top:44px;display:grid;grid-template-columns:repeat(auto-fit,minmax(215px,1fr));gap:1px;
+  background:var(--line);border:1px solid var(--line);border-radius:12px;overflow:hidden}
+.step{background:var(--panel);padding:26px 24px}
+.step .num{font-family:var(--mono);font-size:10.5px;letter-spacing:.13em;color:var(--gold)}
+.step h3{font-family:var(--serif);font-size:20px;margin-top:13px;letter-spacing:-.01em}
+.step p{margin-top:10px;font-size:14.2px;color:var(--text-2);font-weight:300}
+.step .dur{margin-top:16px;font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--text-3)}
+
+/* ============ TRUST ============ */
+.trust{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px;margin-top:44px}
+.trust div{border-left:2px solid var(--line-2);padding-left:20px;display:flex;flex-direction:column;gap:8px;
+  transition:border-color .25s ease}
+.trust div:hover{border-left-color:var(--gold)}
+.trust .tag{font-family:var(--mono);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--text-3)}
+.trust h4{font-family:var(--serif);font-size:19px;letter-spacing:-.01em}
+.trust p{font-size:14.3px;color:var(--text-2);font-weight:300}
+
+/* ============ VERTICALS ============ */
+.verts{display:flex;flex-wrap:wrap;gap:10px;margin-top:34px}
+.vert{font-family:var(--mono);font-size:11px;letter-spacing:.05em;color:var(--text-2);
+  border:1px solid var(--line-2);border-radius:100px;padding:7px 15px;background:var(--panel-2)}
+
+/* ============ CTA ============ */
+.cta{border-top:1px solid var(--line);position:relative;overflow:hidden}
+.cta::before{content:"";position:absolute;inset:auto -10% -60% -10%;height:520px;pointer-events:none;
+  background:radial-gradient(50% 60% at 30% 100%,rgba(224,177,92,.15),transparent 72%)}
+.cta-in{position:relative;z-index:1;padding-block:clamp(60px,8vw,110px);max-width:62ch}
+.cta h2{font-family:var(--serif);font-size:clamp(32px,5vw,56px);line-height:1.04;letter-spacing:-.028em;font-weight:200;margin-top:18px}
+.cta h2 em{font-style:italic;background:var(--grad-gold);-webkit-background-clip:text;background-clip:text;color:transparent}
+.cta p{margin-top:20px;color:var(--text-2);font-size:16.5px;font-weight:300}
+
+footer{border-top:1px solid var(--line);padding-block:30px;background:var(--panel)}
+.foot-in{display:flex;flex-wrap:wrap;gap:18px;align-items:center;justify-content:space-between;
+  font-family:var(--mono);font-size:10.5px;letter-spacing:.07em;color:var(--text-3)}
+.foot-in a{text-decoration:none}.foot-in a:hover{color:var(--gold)}
+:focus-visible{outline:2px solid var(--gold);outline-offset:3px;border-radius:4px}
+</style>
+</head>
+<body>
+
+
+<!-- ============ LOGO SYMBOL ============ -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="apex-mark" viewBox="0 0 64 64">
+      <defs>
+        <linearGradient id="axBg" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0" stop-color="#1E2A38"/><stop offset="55%" stop-color="#111820"/><stop offset="1" stop-color="#070A0E"/>
+        </linearGradient>
+        <radialGradient id="axSheen" cx=".22" cy=".14" r=".85">
+          <stop offset="0" stop-color="#E0B15C" stop-opacity=".30"/><stop offset="1" stop-color="#E0B15C" stop-opacity="0"/>
+        </radialGradient>
+        <linearGradient id="axGold" x1="0" y1="1" x2="1" y2="0">
+          <stop offset="0" stop-color="#B9752F"/><stop offset="50%" stop-color="#E0B15C"/><stop offset="1" stop-color="#F6DCA4"/>
+        </linearGradient>
+      </defs>
+      <path d="M32 0C8.6 0 0 8.6 0 32s8.6 32 32 32 32-8.6 32-32S55.4 0 32 0Z" fill="url(#axBg)"/>
+      <path d="M32 0C8.6 0 0 8.6 0 32s8.6 32 32 32 32-8.6 32-32S55.4 0 32 0Z" fill="url(#axSheen)"/>
+      <path d="M32 0C8.6 0 0 8.6 0 32s8.6 32 32 32 32-8.6 32-32S55.4 0 32 0Z" fill="none" stroke="#ffffff" stroke-opacity=".10" stroke-width="1.1"/>
+      <path d="M15.5 34.5 32 15.5 48.5 34.5" fill="none" stroke="url(#axGold)" stroke-width="5.6" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M20.5 46.5 32 33.5 43.5 46.5" fill="none" stroke="url(#axGold)" stroke-opacity=".42" stroke-width="4.2" stroke-linecap="round" stroke-linejoin="round"/>
+    </symbol>
+  </defs>
+</svg>
+
+<header class="mast">
+  <div class="shell mast-in">
+    <a class="logo" href="#top" aria-label="Apex Automation home">
+      <svg class="logo-icon" width="34" height="34"><use href="#apex-mark"/></svg>
+      <span>
+        <span class="logo-word">Apex <em>Automation</em></span>
+        <span class="logo-sub">Agentic systems</span>
+      </span>
+    </a>
+    <nav>
+      <a href="#build">Practice</a>
+      <a href="#mesh">Architecture</a>
+      <a href="#agents">Agents</a>
+      <a href="#models">Private models</a>
+      <a href="#engage">Engagement</a>
+    </nav>
+    <a class="btn" href="#contact">Book a call</a>
+  </div>
+</header>
+
+<main id="top">
+
+<!-- HERO -->
+<div class="shell hero">
+  <div class="hero-grid">
+    <div>
+      <div class="status"><span class="pulse"></span>Agents running in production today</div>
+      <h1>Your systems already talk.<br>Now give them <em>someone to talk to.</em></h1>
+      <p class="lede">Apex Automation builds and operates <strong>agentic AI systems</strong> for accounting, finance, and back-office teams. We connect your ERP, banking, billing, and document stack over the <strong>Model Context Protocol</strong>, then put a purpose-built agent in front of every workflow still running on spreadsheets and tribal knowledge.</p>
+      <div class="hero-cta">
+        <a class="btn" href="#contact">Book a discovery call</a>
+        <a class="btn ghost" href="#mesh">See the architecture</a>
+      </div>
+    </div>
+
+    <div class="console" aria-label="Example agent activity feed">
+      <div class="console-bar">
+        <svg width="18" height="18" style="border-radius:22.3%"><use href="#apex-mark"/></svg>
+        <span class="ttl">apex · control plane</span>
+        <span class="rt">7 agents · 21 tools · live</span>
+      </div>
+      <div class="feed">
+        <div class="row"><span class="t">09:02</span><span class="m"><b>recon</b> matched 412 of 418 bank lines to GL</span><span class="chip ok">Done</span></div>
+        <div class="row"><span class="t">09:04</span><span class="m"><b>recon</b> escalated 6 exceptions to controller queue</span><span class="chip hold">Review</span></div>
+        <div class="row"><span class="t">09:11</span><span class="m"><b>ap-triage</b> coded 31 invoices, flagged 2 duplicates</span><span class="chip ok">Done</span></div>
+        <div class="row"><span class="t">09:18</span><span class="m"><b>intercompany</b> drafted 8 elimination entries</span><span class="chip hold">Gate</span></div>
+        <div class="row"><span class="t">09:23</span><span class="m"><b>flux</b> wrote variance commentary for 4 cost centers</span><span class="chip ok">Done</span></div>
+        <div class="row"><span class="t">09:26</span><span class="m"><b>portal-bot</b> pulling 3 carrier statements via browser</span><span class="chip run">Running</span></div>
+        <div class="row"><span class="t">09:31</span><span class="m"><b>audit-desk</b> assembled 22 PBC support documents</span><span class="chip ok">Done</span></div>
+      </div>
+      <div class="console-foot">
+        <span>Illustrative activity</span>
+        <span>Every write logged &amp; reversible</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SCALE BAR -->
+<div class="scale">
+  <div class="scale-in">
+    <div><div class="n">61%</div><div class="k">of close effort is data gathering</div></div>
+    <div><div class="n">8&ndash;14</div><div class="k">systems per finance workflow</div></div>
+    <div><div class="n">&lt;30d</div><div class="k">first agent in shadow mode</div></div>
+    <div><div class="n">100%</div><div class="k">of writes logged &amp; reversible</div></div>
+  </div>
+</div>
+
+<!-- PROBLEM -->
+<section id="problem">
+  <div class="shell">
+    <div class="sec-head">
+      <div class="eyebrow">The gap</div>
+      <h2>The bottleneck was never the software. It's <em>everything between</em> the software.</h2>
+      <p>Your ERP is fine. Your billing platform is fine. The pain lives in the handoffs: the export, the reformat, the email chase, the eight-tab reconciliation, and the one person who knows why that entry gets posted that way.</p>
+    </div>
+    <div class="verts">
+      <span class="vert">Multi-entity SaaS</span>
+      <span class="vert">Distribution &amp; wholesale</span>
+      <span class="vert">Franchise operations</span>
+      <span class="vert">Professional services</span>
+      <span class="vert">PE-backed rollups</span>
+      <span class="vert">Insurance &amp; claims admin</span>
+    </div>
+  </div>
+</section>
+
+<!-- PRACTICE -->
+<section id="build">
+  <div class="shell">
+    <div class="sec-head">
+      <div class="eyebrow">Practice areas</div>
+      <h2>Four things we do, and we do <em>only</em> these four.</h2>
+      <p>Depth beats breadth. Every engagement lands somewhere in the finance and operations stack, which is why our agents ship knowing what a subsidiary elimination is before day one.</p>
+    </div>
+    <div class="caps">
+      <div class="cap">
+        <svg class="gi" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M7 8h10M7 12h6M7 16h8"/></svg>
+        <div class="ix">01 / Accounting</div>
+        <h3>Close &amp; controllership</h3>
+        <p>Reconciliation, accrual prep, intercompany eliminations, flux commentary, and audit pull requests, handled by agents that read your actual chart of accounts and segmentation scheme.</p>
+        <ul><li>Bank &amp; subledger reconciliation</li><li>Journal drafting with approval gates</li><li>Multi-subsidiary consolidation</li><li>PBC assembly for auditors</li></ul>
+      </div>
+      <div class="cap">
+        <svg class="gi" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 20h18"/><path d="M6 20V11M11 20V6M16 20v-6M21 20V9"/></svg>
+        <div class="ix">02 / Finance</div>
+        <h3>FP&amp;A and analysis</h3>
+        <p>Ask a question in plain language, get an answer traced back to source rows. Variance narratives, cash forecasting inputs, and board-pack assembly stop being a two-week manual exercise.</p>
+        <ul><li>Natural-language querying over the GL</li><li>Budget vs. actual with commentary</li><li>Cash and AR aging surveillance</li><li>Scheduled reporting packs</li></ul>
+      </div>
+      <div class="cap">
+        <svg class="gi" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="6" r="2.4"/><circle cx="18" cy="6" r="2.4"/><circle cx="12" cy="18" r="2.4"/><path d="M8.4 6h7.2M6.9 8.2 11 15.9M17.1 8.2 13 15.9"/></svg>
+        <div class="ix">03 / Workflow</div>
+        <h3>Cross-system orchestration</h3>
+        <p>The long-running processes that span four platforms and three approvals. We model the process, wire the tools over MCP, and let an agent drive it with humans at the decision points.</p>
+        <ul><li>Order-to-cash, procure-to-pay</li><li>Vendor &amp; customer onboarding</li><li>Exception routing and SLA chasing</li><li>Middleware integration &amp; repair</li></ul>
+      </div>
+      <div class="cap">
+        <svg class="gi" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="4" width="19" height="15" rx="2.5"/><path d="M2.5 8.5h19"/><circle cx="5.6" cy="6.2" r=".6" fill="currentColor"/><path d="M8 13.5h5.5M8 16h3"/></svg>
+        <div class="ix">04 / Web</div>
+        <h3>Browser &amp; portal automation</h3>
+        <p>Not every system has an API. Bank portals, carrier sites, state tax filings, and vendor extranets get handled by supervised browser agents that behave like a very fast, very literal analyst.</p>
+        <ul><li>Statement &amp; document retrieval</li><li>Portal data entry with verification</li><li>Compliance filing preparation</li><li>Structured extraction from PDFs</li></ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ARCHITECTURE -->
+<section id="mesh">
+  <div class="shell">
+    <div class="sec-head">
+      <div class="eyebrow">Architecture</div>
+      <h2>One control plane. <em>Many specialists.</em> Governed access to everything.</h2>
+      <p>A single mega-assistant that does everything badly is the most common failed AI project we get called in to replace. We build a roster of narrow agents behind one interface, each with the smallest set of tools it needs, all speaking MCP to your systems.</p>
+    </div>
+
+    <div class="mesh-wrap">
+      <div class="mesh-scroll">
+        <svg class="mesh-svg" viewBox="0 0 900 430" role="img" aria-label="Diagram: chat interfaces connect to the Apex control plane, which routes to five specialist agents that reach client systems through a governed MCP layer">
+          <g stroke="#1C242E" fill="none" stroke-width="1.2">
+            <path class="flow" d="M150 62 L150 112" stroke="#E0B15C" stroke-width="1.6"/>
+            <path class="flow" d="M450 164 L110 212" stroke="#E0B15C"/>
+            <path class="flow" d="M450 164 L280 212" stroke="#E0B15C"/>
+            <path class="flow" d="M450 164 L450 212" stroke="#E0B15C"/>
+            <path class="flow" d="M450 164 L620 212" stroke="#E0B15C"/>
+            <path class="flow" d="M450 164 L790 212" stroke="#E0B15C"/>
+            <path d="M110 258 L110 296"/><path d="M280 258 L280 296"/><path d="M450 258 L450 296"/>
+            <path d="M620 258 L620 296"/><path d="M790 258 L790 296"/>
+            <path class="flow" d="M110 340 L110 376" stroke="#4FD1C5"/>
+            <path class="flow" d="M280 340 L280 376" stroke="#4FD1C5"/>
+            <path class="flow" d="M450 340 L450 376" stroke="#4FD1C5"/>
+            <path class="flow" d="M620 340 L620 376" stroke="#4FD1C5"/>
+            <path class="flow" d="M790 340 L790 376" stroke="#4FD1C5"/>
+          </g>
+
+          <g>
+            <rect x="30" y="18" width="240" height="44" rx="8" fill="#161D26" stroke="#E0B15C" stroke-opacity=".55" stroke-width="1.1"/>
+            <text x="48" y="39" font-family="IBM Plex Mono, monospace" font-size="10.5" fill="#E0B15C" letter-spacing="1.3">CHAT · SLACK · TEAMS · EMAIL</text>
+            <text x="48" y="53" font-family="IBM Plex Sans, sans-serif" font-size="10" fill="#58656F">How your team talks to the system</text>
+          </g>
+
+          <g>
+            <rect x="30" y="112" width="840" height="52" rx="9" fill="#11161D" stroke="#28323E"/>
+            <text x="48" y="137" font-family="Newsreader, serif" font-size="19" fill="#E9EDF2">Apex control plane</text>
+            <text x="48" y="153" font-family="IBM Plex Sans, sans-serif" font-size="10" fill="#58656F">Routing · memory · policy · evaluation · audit log</text>
+            <text x="852" y="144" text-anchor="end" font-family="IBM Plex Mono, monospace" font-size="9.5" fill="#E0B15C" letter-spacing="1.4">ORCHESTRATION</text>
+          </g>
+
+          <g font-family="IBM Plex Mono, monospace" font-size="10.5">
+            <g><rect x="30" y="212" width="160" height="46" rx="8" fill="#0C1015" stroke="#28323E"/><text x="110" y="234" text-anchor="middle" fill="#E9EDF2">recon</text><text x="110" y="248" text-anchor="middle" font-size="8.5" fill="#58656F">reconciliation</text></g>
+            <g><rect x="200" y="212" width="160" height="46" rx="8" fill="#0C1015" stroke="#28323E"/><text x="280" y="234" text-anchor="middle" fill="#E9EDF2">ap-triage</text><text x="280" y="248" text-anchor="middle" font-size="8.5" fill="#58656F">payables</text></g>
+            <g><rect x="370" y="212" width="160" height="46" rx="8" fill="#0C1015" stroke="#28323E"/><text x="450" y="234" text-anchor="middle" fill="#E9EDF2">flux</text><text x="450" y="248" text-anchor="middle" font-size="8.5" fill="#58656F">variance analysis</text></g>
+            <g><rect x="540" y="212" width="160" height="46" rx="8" fill="#0C1015" stroke="#28323E"/><text x="620" y="234" text-anchor="middle" fill="#E9EDF2">intercompany</text><text x="620" y="248" text-anchor="middle" font-size="8.5" fill="#58656F">consolidation</text></g>
+            <g><rect x="710" y="212" width="160" height="46" rx="8" fill="#0C1015" stroke="#28323E"/><text x="790" y="234" text-anchor="middle" fill="#E9EDF2">portal-bot</text><text x="790" y="248" text-anchor="middle" font-size="8.5" fill="#58656F">web automation</text></g>
+          </g>
+
+          <g>
+            <rect x="30" y="296" width="840" height="44" rx="9" fill="none" stroke="#4FD1C5" stroke-opacity=".7" stroke-width="1.2" stroke-dasharray="3 4"/>
+            <text x="48" y="317" font-family="IBM Plex Mono, monospace" font-size="10.5" fill="#4FD1C5" letter-spacing="1.4">MCP LAYER</text>
+            <text x="48" y="331" font-family="IBM Plex Sans, sans-serif" font-size="10" fill="#58656F">Scoped credentials · per-tool permissions · approval gates on every write</text>
+          </g>
+
+          <g font-family="IBM Plex Sans, sans-serif" font-size="10.5">
+            <g><rect x="30" y="376" width="160" height="38" rx="8" fill="#11161D" stroke="#1C242E"/><text x="110" y="400" text-anchor="middle" fill="#8C99A7">ERP / NetSuite</text></g>
+            <g><rect x="200" y="376" width="160" height="38" rx="8" fill="#11161D" stroke="#1C242E"/><text x="280" y="400" text-anchor="middle" fill="#8C99A7">Banking &amp; treasury</text></g>
+            <g><rect x="370" y="376" width="160" height="38" rx="8" fill="#11161D" stroke="#1C242E"/><text x="450" y="400" text-anchor="middle" fill="#8C99A7">Billing &amp; CRM</text></g>
+            <g><rect x="540" y="376" width="160" height="38" rx="8" fill="#11161D" stroke="#1C242E"/><text x="620" y="400" text-anchor="middle" fill="#8C99A7">Docs &amp; storage</text></g>
+            <g><rect x="710" y="376" width="160" height="38" rx="8" fill="#11161D" stroke="#1C242E"/><text x="790" y="400" text-anchor="middle" fill="#8C99A7">Portals &amp; browser</text></g>
+          </g>
+        </svg>
+      </div>
+      <div class="mesh-legend">
+        <span><b style="background:#E0B15C"></b>Agent traffic</span>
+        <span><b style="background:#4FD1C5"></b>Governed system access</span>
+        <span>Every arrow logged, scoped, and revocable</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ROSTER -->
+<section id="agents">
+  <div class="shell">
+    <div class="sec-head">
+      <div class="eyebrow">The roster</div>
+      <h2>Agents are hires, not features. Each one gets a <em>job description.</em></h2>
+      <p>We scope every agent the way you'd scope a role: what it owns, what it can touch, what it must escalate. Below is a representative production roster for a mid-market finance team. Yours is built from your actual process map.</p>
+    </div>
+    <div class="roster">
+      <div class="roster-head"><span>Agent</span><span>Owns</span><span>Reaches</span><span>Autonomy</span></div>
+      <div class="roster-row">
+        <span class="nm"><i></i>recon</span>
+        <span class="ds">Daily bank, credit card, and subledger matching; exception packaging</span>
+        <span class="sy">ERP · Banking</span><span><span class="chip ok">Autonomous</span></span>
+      </div>
+      <div class="roster-row">
+        <span class="nm"><i></i>ap-triage</span>
+        <span class="ds">Invoice intake, coding, duplicate detection, PO matching, approval routing</span>
+        <span class="sy">ERP · Email · OCR</span><span><span class="chip hold">Gated</span></span>
+      </div>
+      <div class="roster-row">
+        <span class="nm"><i></i>intercompany</span>
+        <span class="ds">Elimination entries, transfer pricing checks, subsidiary tie-outs</span>
+        <span class="sy">ERP · Consolidation</span><span><span class="chip hold">Gated</span></span>
+      </div>
+      <div class="roster-row">
+        <span class="nm"><i></i>flux</span>
+        <span class="ds">Budget-to-actual variance detection and written commentary with drill-through</span>
+        <span class="sy">ERP · Planning</span><span><span class="chip ok">Autonomous</span></span>
+      </div>
+      <div class="roster-row">
+        <span class="nm"><i></i>portal-bot</span>
+        <span class="ds">Credentialed retrieval from bank, carrier, and agency portals without APIs</span>
+        <span class="sy">Browser · Storage</span><span><span class="chip ok">Autonomous</span></span>
+      </div>
+      <div class="roster-row">
+        <span class="nm"><i></i>audit-desk</span>
+        <span class="ds">PBC request fulfillment, support document assembly, sample pulls</span>
+        <span class="sy">ERP · Docs</span><span><span class="chip hold">Gated</span></span>
+      </div>
+      <div class="roster-row">
+        <span class="nm"><i></i>front-desk</span>
+        <span class="ds">The single chat surface your team talks to; routes work to the right specialist</span>
+        <span class="sy">Slack · Teams</span><span><span class="chip ok">Autonomous</span></span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MODELS -->
+<section id="models">
+  <div class="shell">
+    <div class="sec-head">
+      <div class="eyebrow">Custom &amp; private models</div>
+      <h2>When the data can't leave, the <em>model comes to you.</em></h2>
+      <p>Frontier models are the right default for reasoning. They are the wrong default for a regulated dataset, a five-figure monthly token bill, or a workflow that runs the same shape ten thousand times a day. We deploy both, and we know where the line sits.</p>
+    </div>
+    <div class="split">
+      <div class="stack">
+        <div class="note">
+          <h4>Fine-tuned on your domain</h4>
+          <p>We build training sets from your real artifacts — your scripts, your chart of accounts, your policy documents, your resolved tickets — and fine-tune an open-weight model against them. The result speaks your entity structure and your naming conventions on day one.</p>
+          <p>You own the weights. Not a subscription to someone else's fine-tune.</p>
+        </div>
+        <div class="note">
+          <h4>Deployed where you need it</h4>
+          <p>Quantized to run on a single GPU inside your VPC, or on hardware in your building if that's what compliance requires. No customer data crosses a boundary you haven't approved.</p>
+        </div>
+        <div class="note">
+          <h4>Routed, not replaced</h4>
+          <p>High-volume, well-shaped tasks go to your private model. Genuinely hard reasoning escalates to a frontier model. The routing layer makes that call per request, and the cost curve flattens.</p>
+        </div>
+      </div>
+      <div class="stack">
+<pre><span class="c"># apex/routing.policy</span>
+
+<span class="k">classify</span>      → <span class="v">apex-fin-8b</span>   <span class="c">(local, ~40ms)</span>
+<span class="k">extract</span>       → <span class="v">apex-fin-8b</span>   <span class="c">(local)</span>
+<span class="k">reconcile</span>     → <span class="v">apex-fin-8b</span>   <span class="c">(local)</span>
+<span class="k">summarize</span>     → <span class="v">frontier</span>      <span class="c">(quality gate)</span>
+<span class="k">plan_workflow</span> → <span class="v">frontier</span>      <span class="c">(multi-step)</span>
+<span class="k">write_to_gl</span>   → <span class="v">frontier</span> + <span class="v">human</span>
+
+<span class="c"># escalation triggers</span>
+<span class="k">confidence</span> &lt; <span class="v">0.82</span>   → escalate
+<span class="k">model_disagreement</span> → escalate
+<span class="k">novel_entity</span>       → escalate</pre>
+        <div class="note">
+          <h4>Why this matters commercially</h4>
+          <p>Two things kill AI programs in year two: the bill and the auditor. A private model trained on your data addresses both. It's also the piece that makes the system genuinely yours rather than a wrapper you rent.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ENGAGEMENT -->
+<section id="engage">
+  <div class="shell">
+    <div class="sec-head">
+      <div class="eyebrow">How we work</div>
+      <h2>Narrow first. Prove it on <em>one workflow</em>, then widen.</h2>
+      <p>Big-bang transformation programs are how this goes wrong. We take the single process with the worst effort-to-value ratio, ship an agent that owns it end to end, and let the results argue for the next one.</p>
+    </div>
+    <div class="seq">
+      <div class="step"><div class="num">STEP 01</div><h3>Process map</h3><p>We sit with the people doing the work and document what actually happens, including the parts that aren't in the SOP. Output is a ranked automation backlog with honest effort estimates.</p><div class="dur">1&ndash;2 weeks</div></div>
+      <div class="step"><div class="num">STEP 02</div><h3>Connect</h3><p>MCP servers stood up against your systems with scoped, least-privilege credentials. Read-only first. Nothing writes until you've watched it read correctly.</p><div class="dur">1&ndash;3 weeks</div></div>
+      <div class="step"><div class="num">STEP 03</div><h3>Pilot agent</h3><p>One agent, one workflow, running in shadow mode beside your team. We measure agreement rate against human output before it touches anything live.</p><div class="dur">2&ndash;4 weeks</div></div>
+      <div class="step"><div class="num">STEP 04</div><h3>Widen &amp; hand off</h3><p>Additional agents onto the same control plane, plus documentation and training so your team can adjust prompts, gates, and policy without calling us.</p><div class="dur">Ongoing</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- TRUST -->
+<section id="trust">
+  <div class="shell">
+    <div class="sec-head">
+      <div class="eyebrow">Controls</div>
+      <h2>Built to survive a <em>conversation with your auditor.</em></h2>
+      <p>Finance automation has a higher bar than marketing automation. These aren't add-ons we sell separately; they're how every system ships.</p>
+    </div>
+    <div class="trust">
+      <div><div class="tag">Approval gates</div><h4>Humans on the consequential steps</h4><p>Anything that posts to the ledger, moves money, or leaves your organization stops for a named approver. The agent prepares; a person commits.</p></div>
+      <div><div class="tag">Evaluation</div><h4>Regression suites for agents</h4><p>Each agent has a golden dataset of past cases. Every prompt or model change is scored against it before it ships. Drift is caught by a test, not by a controller in March.</p></div>
+      <div><div class="tag">Observability</div><h4>Full trace on every action</h4><p>What the agent saw, what it decided, which tool it called, what came back. Exportable, timestamped, and tied to the run that produced the entry.</p></div>
+      <div><div class="tag">Access</div><h4>Least privilege by default</h4><p>Each agent gets its own credential set with only the tools its job requires. Revoking one agent doesn't take the others down.</p></div>
+      <div><div class="tag">Segregation of duties</div><h4>Preserved, not bypassed</h4><p>Agent identities are modeled inside your existing SoD matrix. An agent that prepares cannot be the one that approves.</p></div>
+      <div><div class="tag">Exit</div><h4>No lock-in by design</h4><p>MCP servers, prompts, evals, and model weights are yours and documented. If you bring it in-house or hire someone else, everything transfers.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<div class="cta" id="contact">
+  <div class="shell cta-in">
+    <div class="eyebrow">Start here</div>
+    <h2>Bring us the workflow <em>everyone complains about.</em></h2>
+    <p>The first conversation is a working session, not a pitch. Walk us through one painful process and you'll leave with an honest read on whether an agent can own it, what it would take, and whether it's worth doing at all.</p>
+    <div class="hero-cta">
+      <a class="btn" href="mailto:hello@apexautomation.ai?subject=Apex%20Automation%20%E2%80%94%20discovery%20call">Book a discovery call</a>
+      <a class="btn ghost" href="mailto:hello@apexautomation.ai?subject=Apex%20Automation%20%E2%80%94%20question">Ask a question first</a>
+    </div>
+  </div>
+</div>
+
+</main>
+
+<footer>
+  <div class="shell foot-in">
+    <span style="display:flex;align-items:center;gap:10px">
+      <svg width="20" height="20" style="border-radius:22.3%"><use href="#apex-mark"/></svg>
+      Apex Automation · Agentic AI for finance operations
+    </span>
+    <a href="mailto:hello@apexautomation.ai">hello@apexautomation.ai</a>
+  </div>
+</footer>
+
+</body>
+</html>
