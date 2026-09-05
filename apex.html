@@ -3,12 +3,12 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="Apex Automation builds and operates agentic AI systems for accounting, finance, and back-office teams.">
+<meta name="description" content="Apex Automation designs, builds, and operates agentic AI systems and custom fine-tuned models for growing enterprises. Deep NetSuite specialty.">
 <meta name="color-scheme" content="dark">
 <title>Apex Automation</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,200;0,6..72,300;0,6..72,400;1,6..72,300&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@300;400;500;600&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@200;300;400;500;600&family=IBM+Plex+Sans:wght@300;400;500;600&display=swap">
 <style>
 :root{
   --void:#07090C;
@@ -26,9 +26,9 @@
   --teal:#4FD1C5;
   --teal-soft:rgba(79,209,197,.12);
 
-  --serif:"Newsreader",Georgia,serif;
+  --display:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
   --sans:"IBM Plex Sans",-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,sans-serif;
-  --mono:"IBM Plex Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
+  --mono:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
   --pad:clamp(20px,5vw,60px);
   --grad-gold:linear-gradient(135deg,#F0CE8A 0%,#E0B15C 42%,#C4813A 100%);
 }
@@ -50,9 +50,8 @@ p{margin:0}
 .logo-icon{display:block;flex:none;border-radius:22.3%;
   box-shadow:0 1px 0 rgba(255,255,255,.09) inset,0 6px 18px -8px rgba(0,0,0,.9);}
 .logo{display:flex;align-items:center;gap:11px;text-decoration:none;margin-right:auto}
-.logo-word{font-family:var(--serif);font-size:20.5px;letter-spacing:-.012em;line-height:1;color:var(--text)}
-.logo-word em{font-style:italic;
-  background:var(--grad-gold);-webkit-background-clip:text;background-clip:text;color:transparent}
+.logo-word{font-family:var(--display);font-size:17px;letter-spacing:-.035em;line-height:1;color:var(--text);font-weight:400}
+.logo-word .hl{color:var(--gold);font-weight:500}
 .logo-sub{display:block;font-family:var(--mono);font-size:8.5px;letter-spacing:.24em;
   text-transform:uppercase;color:var(--text-3);margin-top:4px}
 
@@ -95,9 +94,9 @@ p{margin:0}
 .hero > *{position:relative;z-index:1}
 .hero-grid{display:grid;grid-template-columns:minmax(0,1.02fr) minmax(0,.98fr);gap:clamp(30px,5vw,64px);align-items:start}
 @media (max-width:940px){.hero-grid{grid-template-columns:1fr;gap:40px}}
-.hero h1{font-family:var(--serif);font-size:clamp(40px,6.6vw,74px);line-height:1.0;
-  letter-spacing:-.028em;font-weight:200;margin-top:22px}
-.hero h1 em{font-style:italic;background:var(--grad-gold);-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero h1{font-family:var(--display);font-size:clamp(30px,4.6vw,54px);line-height:1.12;
+  letter-spacing:-.045em;font-weight:300;margin-top:22px}
+.hero h1 .hl{color:var(--gold)}
 .hero .lede{margin-top:24px;max-width:52ch;font-size:17.5px;color:var(--text-2);font-weight:300}
 .hero .lede strong{color:var(--text);font-weight:500}
 .hero-cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:32px}
@@ -138,7 +137,7 @@ p{margin:0}
 .scale{border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:var(--panel)}
 .scale-in{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:1px;background:var(--line)}
 .scale-in > div{background:var(--panel);padding:26px var(--pad)}
-.scale .n{font-family:var(--serif);font-size:clamp(30px,3.6vw,42px);line-height:1;font-weight:200;
+.scale .n{font-family:var(--display);font-size:clamp(26px,3vw,36px);line-height:1;font-weight:300;letter-spacing:-.04em;
   background:var(--grad-gold);-webkit-background-clip:text;background-clip:text;color:transparent;
   font-variant-numeric:tabular-nums}
 .scale .k{font-family:var(--mono);font-size:10px;letter-spacing:.13em;text-transform:uppercase;
@@ -147,9 +146,9 @@ p{margin:0}
 /* ============ SECTIONS ============ */
 section{padding-block:clamp(58px,7.5vw,104px);border-top:1px solid var(--line);position:relative}
 .sec-head{max-width:70ch}
-.sec-head h2{font-family:var(--serif);font-size:clamp(28px,4vw,46px);line-height:1.1;
-  letter-spacing:-.024em;font-weight:200;margin-top:18px}
-.sec-head h2 em{font-style:italic;background:var(--grad-gold);-webkit-background-clip:text;background-clip:text;color:transparent}
+.sec-head h2{font-family:var(--display);font-size:clamp(23px,3.1vw,36px);line-height:1.2;
+  letter-spacing:-.04em;font-weight:300;margin-top:18px}
+.sec-head h2 .hl{color:var(--gold)}
 .sec-head p{margin-top:16px;color:var(--text-2);max-width:60ch;font-weight:300}
 
 /* ============ CAPS ============ */
@@ -163,7 +162,7 @@ section{padding-block:clamp(58px,7.5vw,104px);border-top:1px solid var(--line);p
 .cap:hover::before{opacity:1}
 .cap .gi{width:34px;height:34px;margin-bottom:16px;color:var(--gold)}
 .cap .ix{font-family:var(--mono);font-size:10px;letter-spacing:.13em;color:var(--text-3);text-transform:uppercase}
-.cap h3{font-family:var(--serif);font-size:22px;letter-spacing:-.012em;margin-top:8px}
+.cap h3{font-family:var(--display);font-size:18px;letter-spacing:-.035em;margin-top:8px;font-weight:400}
 .cap p{font-size:14.6px;color:var(--text-2);margin-top:10px;font-weight:300}
 .cap ul{margin:16px 0 0;padding:0;list-style:none;display:flex;flex-direction:column;gap:7px}
 .cap li{font-family:var(--mono);font-size:11.5px;color:var(--text-3);padding-left:16px;position:relative}
@@ -215,12 +214,41 @@ pre .c{color:#4A5560}
 pre .k{color:var(--gold)}
 pre .v{color:var(--teal)}
 
+/* ============ NETSUITE ============ */
+.ns{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);gap:clamp(28px,4.5vw,56px);align-items:start}
+@media (max-width:900px){.ns{grid-template-columns:1fr}}
+.ns-h{font-family:var(--display);font-size:clamp(23px,3.1vw,36px);line-height:1.2;letter-spacing:-.04em;font-weight:300;margin-top:18px}
+.ns-h .hl{color:var(--gold)}
+.ns-p{margin-top:16px;color:var(--text-2);font-weight:300;max-width:58ch}
+.ns-cta{margin-top:26px}
+.ns-panel{border:1px solid var(--line-2);border-radius:12px;overflow:hidden;
+  background:linear-gradient(180deg,var(--panel-2),var(--panel));box-shadow:0 26px 60px -40px rgba(0,0,0,1)}
+.ns-panel-bar{padding:11px 16px;border-bottom:1px solid var(--line);background:rgba(255,255,255,.025);
+  font-family:var(--mono);font-size:10px;letter-spacing:.13em;text-transform:uppercase;color:var(--text-3)}
+.ns-list{margin:0;padding:6px 0;list-style:none}
+.ns-list li{display:grid;grid-template-columns:172px 1fr;gap:14px;align-items:baseline;
+  padding:11px 16px;border-bottom:1px solid rgba(28,36,46,.55)}
+.ns-list li:last-child{border-bottom:0}
+.ns-list b{font-family:var(--mono);font-size:12px;font-weight:500;color:var(--text);letter-spacing:-.02em}
+.ns-list span{font-size:13.4px;color:var(--text-2);font-weight:300}
+@media (max-width:560px){.ns-list li{grid-template-columns:1fr;gap:3px}}
+
+/* ============ PIPELINE ============ */
+.pipeline{margin-top:44px;display:grid;grid-template-columns:repeat(auto-fit,minmax(196px,1fr));gap:1px;
+  background:var(--line);border:1px solid var(--line-2);border-radius:12px;overflow:hidden}
+.pstep{background:linear-gradient(180deg,var(--panel-2),var(--panel));padding:24px 22px;position:relative}
+.pstep::after{content:"";position:absolute;left:22px;right:22px;top:0;height:2px;
+  background:linear-gradient(90deg,var(--gold),transparent);opacity:.5}
+.pnum{font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;color:var(--gold)}
+.pstep h4{font-family:var(--display);font-size:17px;margin-top:11px;letter-spacing:-.035em;font-weight:400}
+.pstep p{margin-top:10px;font-size:13.6px;color:var(--text-2);font-weight:300;line-height:1.58}
+
 /* ============ SEQUENCE ============ */
 .seq{margin-top:44px;display:grid;grid-template-columns:repeat(auto-fit,minmax(215px,1fr));gap:1px;
   background:var(--line);border:1px solid var(--line);border-radius:12px;overflow:hidden}
 .step{background:var(--panel);padding:26px 24px}
 .step .num{font-family:var(--mono);font-size:10.5px;letter-spacing:.13em;color:var(--gold)}
-.step h3{font-family:var(--serif);font-size:20px;margin-top:13px;letter-spacing:-.01em}
+.step h3{font-family:var(--display);font-size:17px;margin-top:13px;letter-spacing:-.035em;font-weight:400}
 .step p{margin-top:10px;font-size:14.2px;color:var(--text-2);font-weight:300}
 .step .dur{margin-top:16px;font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--text-3)}
 
@@ -230,7 +258,7 @@ pre .v{color:var(--teal)}
   transition:border-color .25s ease}
 .trust div:hover{border-left-color:var(--gold)}
 .trust .tag{font-family:var(--mono);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--text-3)}
-.trust h4{font-family:var(--serif);font-size:19px;letter-spacing:-.01em}
+.trust h4{font-family:var(--display);font-size:16.5px;letter-spacing:-.032em;font-weight:400}
 .trust p{font-size:14.3px;color:var(--text-2);font-weight:300}
 
 /* ============ VERTICALS ============ */
@@ -243,8 +271,8 @@ pre .v{color:var(--teal)}
 .cta::before{content:"";position:absolute;inset:auto -10% -60% -10%;height:520px;pointer-events:none;
   background:radial-gradient(50% 60% at 30% 100%,rgba(224,177,92,.15),transparent 72%)}
 .cta-in{position:relative;z-index:1;padding-block:clamp(60px,8vw,110px);max-width:62ch}
-.cta h2{font-family:var(--serif);font-size:clamp(32px,5vw,56px);line-height:1.04;letter-spacing:-.028em;font-weight:200;margin-top:18px}
-.cta h2 em{font-style:italic;background:var(--grad-gold);-webkit-background-clip:text;background-clip:text;color:transparent}
+.cta h2{font-family:var(--display);font-size:clamp(27px,3.8vw,44px);line-height:1.14;letter-spacing:-.045em;font-weight:300;margin-top:18px}
+.cta h2 .hl{color:var(--gold)}
 .cta p{margin-top:20px;color:var(--text-2);font-size:16.5px;font-weight:300}
 
 footer{border-top:1px solid var(--line);padding-block:30px;background:var(--panel)}
@@ -286,7 +314,7 @@ footer{border-top:1px solid var(--line);padding-block:30px;background:var(--pane
     <a class="logo" href="#top" aria-label="Apex Automation home">
       <svg class="logo-icon" width="34" height="34"><use href="#apex-mark"/></svg>
       <span>
-        <span class="logo-word">Apex <em>Automation</em></span>
+        <span class="logo-word">Apex <span class="hl">Automation</span></span>
         <span class="logo-sub">Agentic systems</span>
       </span>
     </a>
@@ -294,10 +322,12 @@ footer{border-top:1px solid var(--line);padding-block:30px;background:var(--pane
       <a href="#build">Practice</a>
       <a href="#mesh">Architecture</a>
       <a href="#agents">Agents</a>
-      <a href="#models">Private models</a>
+      <a href="#models">Custom models</a>
+      <a href="#depth">Background</a>
+      <a href="#netsuite">NetSuite</a>
       <a href="#engage">Engagement</a>
     </nav>
-    <a class="btn" href="#contact">Book a call</a>
+    <a class="btn" href="https://calendar.app.google/jVAFcxap4uJKidcg7" target="_blank" rel="noopener">Book a call</a>
   </div>
 </header>
 
@@ -308,11 +338,11 @@ footer{border-top:1px solid var(--line);padding-block:30px;background:var(--pane
   <div class="hero-grid">
     <div>
       <div class="status"><span class="pulse"></span>Agents running in production today</div>
-      <h1>Your systems already talk.<br>Now give them <em>someone to talk to.</em></h1>
-      <p class="lede">Apex Automation builds and operates <strong>agentic AI systems</strong> for accounting, finance, and back-office teams. We connect your ERP, banking, billing, and document stack over the <strong>Model Context Protocol</strong>, then put a purpose-built agent in front of every workflow still running on spreadsheets and tribal knowledge.</p>
+      <h1>Every system you run.<br><span class="hl">One layer</span> that operates them.</h1>
+      <p class="lede">Apex Automation designs, builds, and operates <strong>agentic AI systems</strong> for growing enterprises. We wire your platforms together over the <strong>Model Context Protocol</strong>, deploy <strong>models fine-tuned on your own data</strong>, and put purpose-built agents in front of the workflows still running on spreadsheets, email chains, and tribal knowledge.</p>
       <div class="hero-cta">
-        <a class="btn" href="#contact">Book a discovery call</a>
-        <a class="btn ghost" href="#mesh">See the architecture</a>
+        <a class="btn" href="https://calendar.app.google/jVAFcxap4uJKidcg7" target="_blank" rel="noopener">Book a discovery call</a>
+        <a class="btn ghost" href="#models">Custom models</a>
       </div>
     </div>
 
@@ -323,13 +353,13 @@ footer{border-top:1px solid var(--line);padding-block:30px;background:var(--pane
         <span class="rt">7 agents · 21 tools · live</span>
       </div>
       <div class="feed">
-        <div class="row"><span class="t">09:02</span><span class="m"><b>recon</b> matched 412 of 418 bank lines to GL</span><span class="chip ok">Done</span></div>
-        <div class="row"><span class="t">09:04</span><span class="m"><b>recon</b> escalated 6 exceptions to controller queue</span><span class="chip hold">Review</span></div>
-        <div class="row"><span class="t">09:11</span><span class="m"><b>ap-triage</b> coded 31 invoices, flagged 2 duplicates</span><span class="chip ok">Done</span></div>
-        <div class="row"><span class="t">09:18</span><span class="m"><b>intercompany</b> drafted 8 elimination entries</span><span class="chip hold">Gate</span></div>
-        <div class="row"><span class="t">09:23</span><span class="m"><b>flux</b> wrote variance commentary for 4 cost centers</span><span class="chip ok">Done</span></div>
-        <div class="row"><span class="t">09:26</span><span class="m"><b>portal-bot</b> pulling 3 carrier statements via browser</span><span class="chip run">Running</span></div>
-        <div class="row"><span class="t">09:31</span><span class="m"><b>audit-desk</b> assembled 22 PBC support documents</span><span class="chip ok">Done</span></div>
+        <div class="row"><span class="t">09:02</span><span class="m"><b>sync</b> reconciled 1,240 records across ERP and CRM</span><span class="chip ok">Done</span></div>
+        <div class="row"><span class="t">09:04</span><span class="m"><b>sync</b> escalated 6 field conflicts to data owner</span><span class="chip hold">Review</span></div>
+        <div class="row"><span class="t">09:11</span><span class="m"><b>intake</b> classified 31 documents, routed 4 exceptions</span><span class="chip ok">Done</span></div>
+        <div class="row"><span class="t">09:14</span><span class="m"><b>apex-ops-8b</b> served 2,104 classifications on-prem</span><span class="chip ok">Local</span></div>
+        <div class="row"><span class="t">09:18</span><span class="m"><b>ledger</b> drafted 8 entries, holding for approval</span><span class="chip hold">Gate</span></div>
+        <div class="row"><span class="t">09:23</span><span class="m"><b>analyst</b> answered 12 questions against the warehouse</span><span class="chip ok">Done</span></div>
+        <div class="row"><span class="t">09:26</span><span class="m"><b>portal-bot</b> pulling 3 vendor statements via browser</span><span class="chip run">Running</span></div>
       </div>
       <div class="console-foot">
         <span>Illustrative activity</span>
@@ -342,8 +372,8 @@ footer{border-top:1px solid var(--line);padding-block:30px;background:var(--pane
 <!-- SCALE BAR -->
 <div class="scale">
   <div class="scale-in">
-    <div><div class="n">61%</div><div class="k">of close effort is data gathering</div></div>
-    <div><div class="n">8&ndash;14</div><div class="k">systems per finance workflow</div></div>
+    <div><div class="n">8&ndash;14</div><div class="k">systems in a typical workflow</div></div>
+    <div><div class="n">1</div><div class="k">control plane over all of them</div></div>
     <div><div class="n">&lt;30d</div><div class="k">first agent in shadow mode</div></div>
     <div><div class="n">100%</div><div class="k">of writes logged &amp; reversible</div></div>
   </div>
@@ -354,16 +384,18 @@ footer{border-top:1px solid var(--line);padding-block:30px;background:var(--pane
   <div class="shell">
     <div class="sec-head">
       <div class="eyebrow">The gap</div>
-      <h2>The bottleneck was never the software. It's <em>everything between</em> the software.</h2>
-      <p>Your ERP is fine. Your billing platform is fine. The pain lives in the handoffs: the export, the reformat, the email chase, the eight-tab reconciliation, and the one person who knows why that entry gets posted that way.</p>
+      <h2>The bottleneck was never the software. It's <span class="hl">everything between</span> the software.</h2>
+      <p>Your ERP is fine. Your CRM is fine. Your billing platform is fine. The pain lives in the handoffs: the export, the reformat, the email chase, the eight-tab lookup, and the one person who knows why the process works the way it does. Growing companies buy more systems; nobody ever buys the connective tissue.</p>
     </div>
     <div class="verts">
       <span class="vert">Multi-entity SaaS</span>
       <span class="vert">Distribution &amp; wholesale</span>
-      <span class="vert">Franchise operations</span>
+      <span class="vert">Franchise &amp; multi-unit</span>
       <span class="vert">Professional services</span>
       <span class="vert">PE-backed rollups</span>
+      <span class="vert">Manufacturing</span>
       <span class="vert">Insurance &amp; claims admin</span>
+      <span class="vert">Healthcare administration</span>
     </div>
   </div>
 </section>
@@ -373,37 +405,37 @@ footer{border-top:1px solid var(--line);padding-block:30px;background:var(--pane
   <div class="shell">
     <div class="sec-head">
       <div class="eyebrow">Practice areas</div>
-      <h2>Four things we do, and we do <em>only</em> these four.</h2>
-      <p>Depth beats breadth. Every engagement lands somewhere in the finance and operations stack, which is why our agents ship knowing what a subsidiary elimination is before day one.</p>
+      <h2>Four disciplines. One <span class="hl">system</span> when they're assembled.</h2>
+      <p>Most engagements start with a single workflow and end with an operating layer over the whole stack. We build all four pieces ourselves, which is why they actually fit together instead of arriving as four vendors blaming each other.</p>
     </div>
     <div class="caps">
       <div class="cap">
-        <svg class="gi" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M7 8h10M7 12h6M7 16h8"/></svg>
-        <div class="ix">01 / Accounting</div>
-        <h3>Close &amp; controllership</h3>
-        <p>Reconciliation, accrual prep, intercompany eliminations, flux commentary, and audit pull requests, handled by agents that read your actual chart of accounts and segmentation scheme.</p>
-        <ul><li>Bank &amp; subledger reconciliation</li><li>Journal drafting with approval gates</li><li>Multi-subsidiary consolidation</li><li>PBC assembly for auditors</li></ul>
-      </div>
-      <div class="cap">
-        <svg class="gi" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 20h18"/><path d="M6 20V11M11 20V6M16 20v-6M21 20V9"/></svg>
-        <div class="ix">02 / Finance</div>
-        <h3>FP&amp;A and analysis</h3>
-        <p>Ask a question in plain language, get an answer traced back to source rows. Variance narratives, cash forecasting inputs, and board-pack assembly stop being a two-week manual exercise.</p>
-        <ul><li>Natural-language querying over the GL</li><li>Budget vs. actual with commentary</li><li>Cash and AR aging surveillance</li><li>Scheduled reporting packs</li></ul>
-      </div>
-      <div class="cap">
         <svg class="gi" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="6" r="2.4"/><circle cx="18" cy="6" r="2.4"/><circle cx="12" cy="18" r="2.4"/><path d="M8.4 6h7.2M6.9 8.2 11 15.9M17.1 8.2 13 15.9"/></svg>
-        <div class="ix">03 / Workflow</div>
-        <h3>Cross-system orchestration</h3>
-        <p>The long-running processes that span four platforms and three approvals. We model the process, wire the tools over MCP, and let an agent drive it with humans at the decision points.</p>
-        <ul><li>Order-to-cash, procure-to-pay</li><li>Vendor &amp; customer onboarding</li><li>Exception routing and SLA chasing</li><li>Middleware integration &amp; repair</li></ul>
+        <div class="ix">01 / Systems</div>
+        <h3>Integration &amp; the MCP layer</h3>
+        <p>The foundation everything else sits on. We stand up governed, least-privilege access to every platform you run — ERP, CRM, billing, warehouse, document store — so one agent can reach all of them without a spaghetti of point-to-point scripts.</p>
+        <ul><li>MCP server development</li><li>API and middleware integration</li><li>Data model and schema mapping</li><li>Legacy system bridging</li></ul>
+      </div>
+      <div class="cap">
+        <svg class="gi" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="2"/><rect x="14" y="3" width="7" height="7" rx="2"/><rect x="3" y="14" width="7" height="7" rx="2"/><path d="M14 17.5h7M17.5 14v7"/></svg>
+        <div class="ix">02 / Agents</div>
+        <h3>Workflow automation</h3>
+        <p>Long-running processes that span four platforms and three approvals, owned end to end by agents with defined scope. Humans stay on the decision points; everything between them stops being manual.</p>
+        <ul><li>Order-to-cash, procure-to-pay</li><li>Document intake and routing</li><li>Vendor and customer onboarding</li><li>Exception handling and SLA chasing</li></ul>
+      </div>
+      <div class="cap">
+        <svg class="gi" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v3M12 18v3M3 12h3M18 12h3M5.6 5.6l2.1 2.1M16.3 16.3l2.1 2.1M18.4 5.6l-2.1 2.1M7.7 16.3l-2.1 2.1"/><circle cx="12" cy="12" r="3.4"/></svg>
+        <div class="ix">03 / Models</div>
+        <h3>Custom model development</h3>
+        <p>Open-weight models fine-tuned on your data, evaluated against your cases, and deployed on infrastructure you control. The piece that turns a rented capability into an asset on your balance sheet.</p>
+        <ul><li>Dataset construction from your artifacts</li><li>QLoRA fine-tuning and evaluation</li><li>Quantized on-prem or VPC deployment</li><li>Retraining as your processes change</li></ul>
       </div>
       <div class="cap">
         <svg class="gi" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="4" width="19" height="15" rx="2.5"/><path d="M2.5 8.5h19"/><circle cx="5.6" cy="6.2" r=".6" fill="currentColor"/><path d="M8 13.5h5.5M8 16h3"/></svg>
         <div class="ix">04 / Web</div>
         <h3>Browser &amp; portal automation</h3>
-        <p>Not every system has an API. Bank portals, carrier sites, state tax filings, and vendor extranets get handled by supervised browser agents that behave like a very fast, very literal analyst.</p>
-        <ul><li>Statement &amp; document retrieval</li><li>Portal data entry with verification</li><li>Compliance filing preparation</li><li>Structured extraction from PDFs</li></ul>
+        <p>Not every system has an API. Supervised browser agents handle the vendor extranets, bank portals, carrier sites, and government filing systems that your team still logs into by hand.</p>
+        <ul><li>Credentialed portal retrieval</li><li>Data entry with verification</li><li>Structured extraction from PDFs</li><li>Scheduled compliance filings</li></ul>
       </div>
     </div>
   </div>
@@ -414,7 +446,7 @@ footer{border-top:1px solid var(--line);padding-block:30px;background:var(--pane
   <div class="shell">
     <div class="sec-head">
       <div class="eyebrow">Architecture</div>
-      <h2>One control plane. <em>Many specialists.</em> Governed access to everything.</h2>
+      <h2>One control plane. <span class="hl">Many specialists.</span> Governed access to everything.</h2>
       <p>A single mega-assistant that does everything badly is the most common failed AI project we get called in to replace. We build a roster of narrow agents behind one interface, each with the smallest set of tools it needs, all speaking MCP to your systems.</p>
     </div>
 
@@ -439,35 +471,35 @@ footer{border-top:1px solid var(--line);padding-block:30px;background:var(--pane
 
           <g>
             <rect x="30" y="18" width="240" height="44" rx="8" fill="#161D26" stroke="#E0B15C" stroke-opacity=".55" stroke-width="1.1"/>
-            <text x="48" y="39" font-family="IBM Plex Mono, monospace" font-size="10.5" fill="#E0B15C" letter-spacing="1.3">CHAT · SLACK · TEAMS · EMAIL</text>
+            <text x="48" y="39" font-family="JetBrains Mono, monospace" font-size="10.5" fill="#E0B15C" letter-spacing="1.3">CHAT · SLACK · TEAMS · EMAIL</text>
             <text x="48" y="53" font-family="IBM Plex Sans, sans-serif" font-size="10" fill="#58656F">How your team talks to the system</text>
           </g>
 
           <g>
             <rect x="30" y="112" width="840" height="52" rx="9" fill="#11161D" stroke="#28323E"/>
-            <text x="48" y="137" font-family="Newsreader, serif" font-size="19" fill="#E9EDF2">Apex control plane</text>
-            <text x="48" y="153" font-family="IBM Plex Sans, sans-serif" font-size="10" fill="#58656F">Routing · memory · policy · evaluation · audit log</text>
-            <text x="852" y="144" text-anchor="end" font-family="IBM Plex Mono, monospace" font-size="9.5" fill="#E0B15C" letter-spacing="1.4">ORCHESTRATION</text>
+            <text x="48" y="137" font-family="JetBrains Mono, monospace" font-size="19" fill="#E9EDF2">Apex control plane</text>
+            <text x="48" y="153" font-family="IBM Plex Sans, sans-serif" font-size="10" fill="#58656F">Routing · memory · policy · model selection · evaluation · audit log</text>
+            <text x="852" y="144" text-anchor="end" font-family="JetBrains Mono, monospace" font-size="9.5" fill="#E0B15C" letter-spacing="1.4">ORCHESTRATION</text>
           </g>
 
-          <g font-family="IBM Plex Mono, monospace" font-size="10.5">
-            <g><rect x="30" y="212" width="160" height="46" rx="8" fill="#0C1015" stroke="#28323E"/><text x="110" y="234" text-anchor="middle" fill="#E9EDF2">recon</text><text x="110" y="248" text-anchor="middle" font-size="8.5" fill="#58656F">reconciliation</text></g>
-            <g><rect x="200" y="212" width="160" height="46" rx="8" fill="#0C1015" stroke="#28323E"/><text x="280" y="234" text-anchor="middle" fill="#E9EDF2">ap-triage</text><text x="280" y="248" text-anchor="middle" font-size="8.5" fill="#58656F">payables</text></g>
-            <g><rect x="370" y="212" width="160" height="46" rx="8" fill="#0C1015" stroke="#28323E"/><text x="450" y="234" text-anchor="middle" fill="#E9EDF2">flux</text><text x="450" y="248" text-anchor="middle" font-size="8.5" fill="#58656F">variance analysis</text></g>
-            <g><rect x="540" y="212" width="160" height="46" rx="8" fill="#0C1015" stroke="#28323E"/><text x="620" y="234" text-anchor="middle" fill="#E9EDF2">intercompany</text><text x="620" y="248" text-anchor="middle" font-size="8.5" fill="#58656F">consolidation</text></g>
+          <g font-family="JetBrains Mono, monospace" font-size="10.5">
+            <g><rect x="30" y="212" width="160" height="46" rx="8" fill="#0C1015" stroke="#28323E"/><text x="110" y="234" text-anchor="middle" fill="#E9EDF2">sync</text><text x="110" y="248" text-anchor="middle" font-size="8.5" fill="#58656F">record sync</text></g>
+            <g><rect x="200" y="212" width="160" height="46" rx="8" fill="#0C1015" stroke="#28323E"/><text x="280" y="234" text-anchor="middle" fill="#E9EDF2">intake</text><text x="280" y="248" text-anchor="middle" font-size="8.5" fill="#58656F">document intake</text></g>
+            <g><rect x="370" y="212" width="160" height="46" rx="8" fill="#0C1015" stroke="#28323E"/><text x="450" y="234" text-anchor="middle" fill="#E9EDF2">analyst</text><text x="450" y="248" text-anchor="middle" font-size="8.5" fill="#58656F">data &amp; reporting</text></g>
+            <g><rect x="540" y="212" width="160" height="46" rx="8" fill="#0C1015" stroke="#28323E"/><text x="620" y="234" text-anchor="middle" fill="#E9EDF2">ledger</text><text x="620" y="248" text-anchor="middle" font-size="8.5" fill="#58656F">finance ops</text></g>
             <g><rect x="710" y="212" width="160" height="46" rx="8" fill="#0C1015" stroke="#28323E"/><text x="790" y="234" text-anchor="middle" fill="#E9EDF2">portal-bot</text><text x="790" y="248" text-anchor="middle" font-size="8.5" fill="#58656F">web automation</text></g>
           </g>
 
           <g>
             <rect x="30" y="296" width="840" height="44" rx="9" fill="none" stroke="#4FD1C5" stroke-opacity=".7" stroke-width="1.2" stroke-dasharray="3 4"/>
-            <text x="48" y="317" font-family="IBM Plex Mono, monospace" font-size="10.5" fill="#4FD1C5" letter-spacing="1.4">MCP LAYER</text>
+            <text x="48" y="317" font-family="JetBrains Mono, monospace" font-size="10.5" fill="#4FD1C5" letter-spacing="1.4">MCP LAYER</text>
             <text x="48" y="331" font-family="IBM Plex Sans, sans-serif" font-size="10" fill="#58656F">Scoped credentials · per-tool permissions · approval gates on every write</text>
           </g>
 
           <g font-family="IBM Plex Sans, sans-serif" font-size="10.5">
-            <g><rect x="30" y="376" width="160" height="38" rx="8" fill="#11161D" stroke="#1C242E"/><text x="110" y="400" text-anchor="middle" fill="#8C99A7">ERP / NetSuite</text></g>
-            <g><rect x="200" y="376" width="160" height="38" rx="8" fill="#11161D" stroke="#1C242E"/><text x="280" y="400" text-anchor="middle" fill="#8C99A7">Banking &amp; treasury</text></g>
-            <g><rect x="370" y="376" width="160" height="38" rx="8" fill="#11161D" stroke="#1C242E"/><text x="450" y="400" text-anchor="middle" fill="#8C99A7">Billing &amp; CRM</text></g>
+            <g><rect x="30" y="376" width="160" height="38" rx="8" fill="#11161D" stroke="#1C242E"/><text x="110" y="400" text-anchor="middle" fill="#8C99A7">ERP</text></g>
+            <g><rect x="200" y="376" width="160" height="38" rx="8" fill="#11161D" stroke="#1C242E"/><text x="280" y="400" text-anchor="middle" fill="#8C99A7">CRM &amp; billing</text></g>
+            <g><rect x="370" y="376" width="160" height="38" rx="8" fill="#11161D" stroke="#1C242E"/><text x="450" y="400" text-anchor="middle" fill="#8C99A7">Warehouse &amp; BI</text></g>
             <g><rect x="540" y="376" width="160" height="38" rx="8" fill="#11161D" stroke="#1C242E"/><text x="620" y="400" text-anchor="middle" fill="#8C99A7">Docs &amp; storage</text></g>
             <g><rect x="710" y="376" width="160" height="38" rx="8" fill="#11161D" stroke="#1C242E"/><text x="790" y="400" text-anchor="middle" fill="#8C99A7">Portals &amp; browser</text></g>
           </g>
@@ -487,46 +519,19 @@ footer{border-top:1px solid var(--line);padding-block:30px;background:var(--pane
   <div class="shell">
     <div class="sec-head">
       <div class="eyebrow">The roster</div>
-      <h2>Agents are hires, not features. Each one gets a <em>job description.</em></h2>
-      <p>We scope every agent the way you'd scope a role: what it owns, what it can touch, what it must escalate. Below is a representative production roster for a mid-market finance team. Yours is built from your actual process map.</p>
+      <h2>Agents are hires, not features. Each one gets a <span class="hl">job description.</span></h2>
+      <p>We scope every agent the way you'd scope a role: what it owns, what it can touch, what it must escalate. Below is a representative production roster for a growing enterprise. Yours is built from your actual process map, not a template.</p>
     </div>
     <div class="roster">
       <div class="roster-head"><span>Agent</span><span>Owns</span><span>Reaches</span><span>Autonomy</span></div>
-      <div class="roster-row">
-        <span class="nm"><i></i>recon</span>
-        <span class="ds">Daily bank, credit card, and subledger matching; exception packaging</span>
-        <span class="sy">ERP · Banking</span><span><span class="chip ok">Autonomous</span></span>
-      </div>
-      <div class="roster-row">
-        <span class="nm"><i></i>ap-triage</span>
-        <span class="ds">Invoice intake, coding, duplicate detection, PO matching, approval routing</span>
-        <span class="sy">ERP · Email · OCR</span><span><span class="chip hold">Gated</span></span>
-      </div>
-      <div class="roster-row">
-        <span class="nm"><i></i>intercompany</span>
-        <span class="ds">Elimination entries, transfer pricing checks, subsidiary tie-outs</span>
-        <span class="sy">ERP · Consolidation</span><span><span class="chip hold">Gated</span></span>
-      </div>
-      <div class="roster-row">
-        <span class="nm"><i></i>flux</span>
-        <span class="ds">Budget-to-actual variance detection and written commentary with drill-through</span>
-        <span class="sy">ERP · Planning</span><span><span class="chip ok">Autonomous</span></span>
-      </div>
-      <div class="roster-row">
-        <span class="nm"><i></i>portal-bot</span>
-        <span class="ds">Credentialed retrieval from bank, carrier, and agency portals without APIs</span>
-        <span class="sy">Browser · Storage</span><span><span class="chip ok">Autonomous</span></span>
-      </div>
-      <div class="roster-row">
-        <span class="nm"><i></i>audit-desk</span>
-        <span class="ds">PBC request fulfillment, support document assembly, sample pulls</span>
-        <span class="sy">ERP · Docs</span><span><span class="chip hold">Gated</span></span>
-      </div>
-      <div class="roster-row">
-        <span class="nm"><i></i>front-desk</span>
-        <span class="ds">The single chat surface your team talks to; routes work to the right specialist</span>
-        <span class="sy">Slack · Teams</span><span><span class="chip ok">Autonomous</span></span>
-      </div>
+      <div class="roster-row"><span class="nm"><i></i>front-desk</span><span class="ds">The single chat surface your team talks to; routes work to the right specialist</span><span class="sy">Slack &middot; Teams</span><span><span class="chip ok">Autonomous</span></span></div>
+      <div class="roster-row"><span class="nm"><i></i>sync</span><span class="ds">Keeps records consistent across ERP, CRM, and billing; surfaces field conflicts</span><span class="sy">ERP &middot; CRM &middot; Billing</span><span><span class="chip ok">Autonomous</span></span></div>
+      <div class="roster-row"><span class="nm"><i></i>intake</span><span class="ds">Classifies inbound documents and email, extracts fields, routes to the owning system</span><span class="sy">Email &middot; OCR &middot; ERP</span><span><span class="chip hold">Gated</span></span></div>
+      <div class="roster-row"><span class="nm"><i></i>analyst</span><span class="ds">Natural-language questions against the warehouse, answered with traced source rows</span><span class="sy">Warehouse &middot; BI</span><span><span class="chip ok">Autonomous</span></span></div>
+      <div class="roster-row"><span class="nm"><i></i>ledger</span><span class="ds">Reconciliation, entry drafting, variance commentary, period-end support</span><span class="sy">ERP &middot; Banking</span><span><span class="chip hold">Gated</span></span></div>
+      <div class="roster-row"><span class="nm"><i></i>portal-bot</span><span class="ds">Credentialed retrieval and entry on systems that never shipped an API</span><span class="sy">Browser &middot; Storage</span><span><span class="chip ok">Autonomous</span></span></div>
+      <div class="roster-row"><span class="nm"><i></i>dispatch</span><span class="ds">Watches queues and SLAs, chases owners, escalates what has gone quiet</span><span class="sy">Ticketing &middot; Email</span><span><span class="chip ok">Autonomous</span></span></div>
+      <div class="roster-row"><span class="nm"><i></i>audit-desk</span><span class="ds">Assembles support documentation and evidence packages on request</span><span class="sy">ERP &middot; Docs</span><span><span class="chip hold">Gated</span></span></div>
     </div>
   </div>
 </section>
@@ -535,45 +540,71 @@ footer{border-top:1px solid var(--line);padding-block:30px;background:var(--pane
 <section id="models">
   <div class="shell">
     <div class="sec-head">
-      <div class="eyebrow">Custom &amp; private models</div>
-      <h2>When the data can't leave, the <em>model comes to you.</em></h2>
-      <p>Frontier models are the right default for reasoning. They are the wrong default for a regulated dataset, a five-figure monthly token bill, or a workflow that runs the same shape ten thousand times a day. We deploy both, and we know where the line sits.</p>
+      <div class="eyebrow">Custom model development</div>
+      <h2>Rent a capability, or <span class="hl">own</span> one.</h2>
+      <p>Every company using a frontier API is renting the same intelligence as its competitors, metered by the token, with its data crossing someone else's boundary. Fine-tuning an open-weight model on your own processes produces something none of them have and none of them can buy. For a company at your size, that is the most durable technical advantage available right now.</p>
     </div>
+
+    <div class="pipeline">
+      <div class="pstep"><div class="pnum">01</div><h4>Extract</h4><p>We mine your real artifacts &mdash; resolved tickets, existing scripts, policy docs, historical decisions, correspondence &mdash; into a structured training corpus. Your institutional knowledge becomes a dataset.</p></div>
+      <div class="pstep"><div class="pnum">02</div><h4>Train</h4><p>QLoRA fine-tuning against an open-weight base on rented GPU capacity. No fixed infrastructure cost, no long-term hardware commitment, checkpointed so a failed node costs an hour instead of a week.</p></div>
+      <div class="pstep"><div class="pnum">03</div><h4>Evaluate</h4><p>Scored against a held-out set of your own cases before anything ships. We measure against the frontier model it is replacing, per task type, so the tradeoff is a number rather than a hunch.</p></div>
+      <div class="pstep"><div class="pnum">04</div><h4>Deploy</h4><p>Quantized to run on a single GPU. Your VPC, a box in your building, or a managed endpoint &mdash; whichever your compliance posture requires. Bound directly to the agent runtime.</p></div>
+      <div class="pstep"><div class="pnum">05</div><h4>Compound</h4><p>Every corrected output feeds the next training set. The model gets measurably better at your specific work each quarter, and the asset appreciates instead of depreciating.</p></div>
+    </div>
+
     <div class="split">
       <div class="stack">
         <div class="note">
-          <h4>Fine-tuned on your domain</h4>
-          <p>We build training sets from your real artifacts — your scripts, your chart of accounts, your policy documents, your resolved tickets — and fine-tune an open-weight model against them. The result speaks your entity structure and your naming conventions on day one.</p>
-          <p>You own the weights. Not a subscription to someone else's fine-tune.</p>
+          <h4>Sized for real budgets</h4>
+          <p>Custom models used to mean a research team and a seven-figure cluster. That is no longer true. A quantized fine-tune runs on a single consumer-class GPU, and training happens on rented capacity billed by the hour. Small enterprises can now hold a genuine model asset, and most of them do not know it yet.</p>
         </div>
         <div class="note">
-          <h4>Deployed where you need it</h4>
-          <p>Quantized to run on a single GPU inside your VPC, or on hardware in your building if that's what compliance requires. No customer data crosses a boundary you haven't approved.</p>
+          <h4>Where your data never goes</h4>
+          <p>Regulated records, customer PII, contract terms, proprietary pricing. A model running inside your perimeter means those never leave it &mdash; not for inference, not for logging, not for a vendor's future training run. For a lot of buyers this is the only architecture legal will approve.</p>
         </div>
         <div class="note">
-          <h4>Routed, not replaced</h4>
-          <p>High-volume, well-shaped tasks go to your private model. Genuinely hard reasoning escalates to a frontier model. The routing layer makes that call per request, and the cost curve flattens.</p>
+          <h4>You own the weights</h4>
+          <p>Not a tenant on someone else's fine-tune, not a license that lapses. The artifact is yours, it transfers if you sell the company, and it keeps working if we stop existing.</p>
         </div>
       </div>
       <div class="stack">
-<pre><span class="c"># apex/routing.policy</span>
+<pre><span class="c"># apex/routing.policy &mdash; per-request model selection</span>
 
-<span class="k">classify</span>      → <span class="v">apex-fin-8b</span>   <span class="c">(local, ~40ms)</span>
-<span class="k">extract</span>       → <span class="v">apex-fin-8b</span>   <span class="c">(local)</span>
-<span class="k">reconcile</span>     → <span class="v">apex-fin-8b</span>   <span class="c">(local)</span>
-<span class="k">summarize</span>     → <span class="v">frontier</span>      <span class="c">(quality gate)</span>
-<span class="k">plan_workflow</span> → <span class="v">frontier</span>      <span class="c">(multi-step)</span>
-<span class="k">write_to_gl</span>   → <span class="v">frontier</span> + <span class="v">human</span>
+<span class="k">classify</span>        &rarr; <span class="v">apex-ops-8b</span>   <span class="c">(local, ~40ms)</span>
+<span class="k">extract</span>         &rarr; <span class="v">apex-ops-8b</span>   <span class="c">(local)</span>
+<span class="k">match_records</span>   &rarr; <span class="v">apex-ops-8b</span>   <span class="c">(local)</span>
+<span class="k">draft_response</span>  &rarr; <span class="v">apex-ops-8b</span>   <span class="c">(local)</span>
+<span class="k">summarize</span>       &rarr; <span class="v">frontier</span>      <span class="c">(quality gate)</span>
+<span class="k">plan_workflow</span>   &rarr; <span class="v">frontier</span>      <span class="c">(multi-step)</span>
+<span class="k">write_to_system</span> &rarr; <span class="v">frontier</span> + <span class="v">human</span>
 
 <span class="c"># escalation triggers</span>
-<span class="k">confidence</span> &lt; <span class="v">0.82</span>   → escalate
-<span class="k">model_disagreement</span> → escalate
-<span class="k">novel_entity</span>       → escalate</pre>
+<span class="k">confidence</span> &lt; <span class="v">0.82</span>    &rarr; escalate
+<span class="k">model_disagreement</span>  &rarr; escalate
+<span class="k">novel_entity</span>        &rarr; escalate
+<span class="k">policy_boundary</span>     &rarr; escalate + notify</pre>
         <div class="note">
-          <h4>Why this matters commercially</h4>
-          <p>Two things kill AI programs in year two: the bill and the auditor. A private model trained on your data addresses both. It's also the piece that makes the system genuinely yours rather than a wrapper you rent.</p>
+          <h4>Routed, not replaced</h4>
+          <p>This is the part people get wrong. A custom model does not replace the frontier model; it absorbs the high-volume, well-shaped work where a specialist beats a generalist on both cost and latency. Hard reasoning still escalates. The routing layer decides per request, and the cost curve flattens without the quality dropping.</p>
         </div>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- DOMAIN DEPTH -->
+<section id="depth">
+  <div class="shell">
+    <div class="sec-head">
+      <div class="eyebrow">Where we come from</div>
+      <h2>Built by people who spent years <span class="hl">inside the ERP.</span></h2>
+      <p>Our background is enterprise systems and accounting &mdash; multi-entity ERP implementations, GL architecture, integration platforms, and the scripting underneath all of it. That is not the whole practice, but it is why the systems we build hold up.</p>
+    </div>
+    <div class="trust">
+      <div><div class="tag">Consequence</div><h4>We know which mistakes are expensive</h4><p>An agent that mis-tags a support ticket costs a minute. An agent that mis-posts to the ledger costs a restatement. That instinct for where to put the guardrails only comes from having been on the hook for it.</p></div>
+      <div><div class="tag">Structure</div><h4>Your data model is not a detail</h4><p>Entity hierarchies, segmentation schemes, subsidiary structures, effective dating. Agents fail on these constantly because whoever built them had never seen a real chart of accounts. We start from the structure.</p></div>
+      <div><div class="tag">Reality</div><h4>The documented process is not the process</h4><p>Every organization runs on undocumented exceptions. We map what actually happens before we automate anything, because an agent built from the SOP breaks in week two.</p></div>
     </div>
   </div>
 </section>
@@ -583,7 +614,7 @@ footer{border-top:1px solid var(--line);padding-block:30px;background:var(--pane
   <div class="shell">
     <div class="sec-head">
       <div class="eyebrow">How we work</div>
-      <h2>Narrow first. Prove it on <em>one workflow</em>, then widen.</h2>
+      <h2>Narrow first. Prove it on <span class="hl">one workflow</span>, then widen.</h2>
       <p>Big-bang transformation programs are how this goes wrong. We take the single process with the worst effort-to-value ratio, ship an agent that owns it end to end, and let the results argue for the next one.</p>
     </div>
     <div class="seq">
@@ -600,7 +631,7 @@ footer{border-top:1px solid var(--line);padding-block:30px;background:var(--pane
   <div class="shell">
     <div class="sec-head">
       <div class="eyebrow">Controls</div>
-      <h2>Built to survive a <em>conversation with your auditor.</em></h2>
+      <h2>Built to survive a <span class="hl">conversation with your auditor.</span></h2>
       <p>Finance automation has a higher bar than marketing automation. These aren't add-ons we sell separately; they're how every system ships.</p>
     </div>
     <div class="trust">
@@ -614,14 +645,41 @@ footer{border-top:1px solid var(--line);padding-block:30px;background:var(--pane
   </div>
 </section>
 
+<!-- NETSUITE -->
+<section id="netsuite">
+  <div class="shell">
+    <div class="ns">
+      <div>
+        <div class="eyebrow">Platform specialty</div>
+        <h2 class="ns-h">Deep bench on <span class="hl">NetSuite</span>.</h2>
+        <p class="ns-p">NetSuite is where our engineering started, and it is still the platform we know at the level that matters: SuiteScript 2.1, SuiteQL, OneWorld multi-subsidiary structures, custom segments and GL impact, saved search architecture, and the integration platforms bolted around them.</p>
+        <p class="ns-p">Most agent projects on NetSuite fail for the same reason: whoever built them treated it as a generic REST API. It isn't. Governance limits, script execution contexts, subsidiary permission boundaries, and the difference between a record you can load and a record you can save are all things you learn by shipping on it, not by reading the docs. If you run NetSuite, we start further down the field.</p>
+        <div class="ns-cta"><a class="btn ghost" href="https://calendar.app.google/jVAFcxap4uJKidcg7" target="_blank" rel="noopener">Talk through your NetSuite stack</a></div>
+      </div>
+      <div class="ns-panel">
+        <div class="ns-panel-bar"><span>netsuite &middot; capability</span></div>
+        <ul class="ns-list">
+          <li><b>SuiteScript 2.1</b><span>User Event, Scheduled, Map/Reduce, Suitelet, Restlet</span></li>
+          <li><b>SuiteQL &amp; saved search</b><span>Query architecture behind agent read access</span></li>
+          <li><b>OneWorld</b><span>Multi-subsidiary, intercompany, consolidated reporting</span></li>
+          <li><b>GL &amp; segmentation</b><span>Custom segments, GL impact plug-ins, posting rules</span></li>
+          <li><b>Integration</b><span>Boomi, Celigo, native REST/SOAP, custom middleware</span></li>
+          <li><b>MCP servers</b><span>Purpose-built NetSuite tooling for agent access</span></li>
+          <li><b>Data migration</b><span>CSV import strategy, transformation, validation</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- CTA -->
 <div class="cta" id="contact">
   <div class="shell cta-in">
     <div class="eyebrow">Start here</div>
-    <h2>Bring us the workflow <em>everyone complains about.</em></h2>
-    <p>The first conversation is a working session, not a pitch. Walk us through one painful process and you'll leave with an honest read on whether an agent can own it, what it would take, and whether it's worth doing at all.</p>
+    <h2>Bring us the workflow <span class="hl">everyone complains about.</span></h2>
+    <p>The first conversation is a working session, not a pitch. Walk us through one painful process and you'll leave with an honest read on whether an agent can own it, what it would take, and whether it's worth doing at all. Thirty minutes, straight to the calendar.</p>
     <div class="hero-cta">
-      <a class="btn" href="mailto:hello@apexautomation.ai?subject=Apex%20Automation%20%E2%80%94%20discovery%20call">Book a discovery call</a>
+      <a class="btn" href="https://calendar.app.google/jVAFcxap4uJKidcg7" target="_blank" rel="noopener">Book a discovery call</a>
       <a class="btn ghost" href="mailto:hello@apexautomation.ai?subject=Apex%20Automation%20%E2%80%94%20question">Ask a question first</a>
     </div>
   </div>
